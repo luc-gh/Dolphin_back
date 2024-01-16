@@ -18,11 +18,10 @@ O padrão de commits é:
 
 Foram instalados os pacotes:
 
-- Express.js
-- Mongoose
-- Axios
-- Nodemon
-
+- Express.js: que auxilia no roteamento
+- Mongoose: auxilia no mapeamento de dados e nas conexões com o MongoDB
+- Axios: facilita a solicitação de requisições HTTP
+- Nodemon: que reinicia automaticamente o servidor sempre que arquivos são modificados, facilitando o desenvolvimento
 
 ---
 
