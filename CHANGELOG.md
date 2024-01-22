@@ -14,6 +14,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 8. Configuração de conexão com banco de dados, com as variáveis de ambiente
 9. Falha na conexão (interna), seguida de correção e sucesso na conexão
 10. Adição de documentação básica, externa à oficial
+11. Alteração no padrão de commits 
 
 ### Listagem de fontes ou referências de aprendizado
 
@@ -26,7 +27,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 > - ChatGPT
 > - Github
 
-> ### Conceitos ou princípios assumidos
+> **Conceitos ou princípios assumidos**
 > 
 > - Arquivos .env devem ser colocados na raíz de um projeto Node
-
+> - O novo padrão de commits é o presente no repositório [iuricode/padroes-de-commits](https://github.com/iuricode/padroes-de-commits).
