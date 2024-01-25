@@ -19,7 +19,7 @@ const client = new MongoClient(uriString, {
     }
 });
 
-async function run() {
+export async function run() {  //export permite o acesso externo e async permite a execução circunstancial
     try {
         // Conexão cliente-servidor (optional starting in v4.7)
         await client.connect();
