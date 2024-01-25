@@ -6,6 +6,6 @@ let app = express();
 
 //Chama o e verifica conexão com o db
 async function main() {
-    app.use('/UserService', userService);
+    //app.use("/users", userService);
     await run();
 }

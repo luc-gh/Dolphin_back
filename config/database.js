@@ -28,4 +28,13 @@ async function run() {
     }
 }
 
+/*
+async function addUser(){
+    try {
+        await client.connect();
+
+    }
+}
+*/
+
 run().catch(console.dir);

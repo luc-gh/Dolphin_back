@@ -1,9 +1,18 @@
-const user = require('../models/User');
-const express = require('express');
-const router = express.Router();
+const User = require('../models/User');
 
-router.get("/user", (req, res, next) => {
-    res.send("API em funcionamento!");
-});
+function createUser(body){
+    let user = new User();
+    user.nome = body.nome;
+    user.senha = body.senha;
+    user.email = body.email;
+    consoleUser(user);
+    return user;
+}
 
-module.exports = router;
+function consoleUser(user){
+    console.log("Nome: " + user.nome);
+    console.log("Email: " + user.email);
+    console.log("Senha: " + user.senha);
+}
+
+module.exports = {createUser};
