@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('User');
+const User = require('src/models/User');
 
 let schema = new mongoose.Schema({
     autor: {type: User, unique: true, required: true, ref: 'User'},

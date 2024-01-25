@@ -16,6 +16,9 @@ Foram instalados os pacotes:
 - Axios: facilita a solicitação de requisições HTTP
 - Nodemon: que reinicia automaticamente o servidor sempre que arquivos são modificados, facilitando o desenvolvimento
 
+Como a tipagem estática é mais adequada à adaptação dos dados manipulados, o TypeScript será instalado como uma dependência de desenvolvimento
+e substituirá todos os arquivos JavaScript criados no início do projeto. Todos eles foram reformulados.
+
 ---
 
 @ MIT License 2024
