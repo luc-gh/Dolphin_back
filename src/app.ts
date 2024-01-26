@@ -1,10 +1,16 @@
-import * as db from "../config/database";
-import express from "express";
+import * as fs from "fs";
+import express, {Request, Response} from "express";
+import dotenv from "dotenv";
 
-let app = express();
+dotenv.config({path: '.env'});
+const app = express();
 
-//Chama o e verifica conexão com o db
-async function main() {
-    //app.use("/users", userService);
-    await db.run();
-}
+app.get("/", (req: Request, res: Response) => {
+    res.json({
+        "users": ["Lucas", "Ana", "Carlos"]
+    });
+});
+
+app.listen(process.env.SERVER_PORT, () => {
+    console.log("Servidor ativo na porta " + process.env.SERVER_PORT);
+});
