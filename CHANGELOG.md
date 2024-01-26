@@ -21,13 +21,29 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 15. Instalação de definições de tipo para Axios, Mongoose e Express 
 16. Substituição de todos os arquivos JavaScript por arquivos TypeScript
 17. Reformatação de projeto e adição de scripts de execução no arquivo [```package.json``](package.json)
+18. Alteração no formato de execução com o TS: 
+    > Uso do comando ```npm run dev``` só foi permitido devido ao uso do script:
+    ```
+    (...)
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.ts",
+    "dev": "tsx watch src/app.ts",
+    "build": "tsc"
+    }, 
+    "type": "module",
+    (...)
+    ``` 
+    > 
+    > Além disso, a execução isolada de arquivos TS é feita com o comando ```tsx <nome-do-arquivo>.ts```. 
+19. Mudança em nomes de variáveis de ambiente
 
 ### Listagem de fontes ou referências de aprendizado
 
 > **Vídeos:**
-> - [How to Deploy MERN Application on Vercel? HOST Full-Stack MERN App to Vercel for Free | Youtube](https://www.youtube.com/watch?v=Cfi0mymfKiA&t=157s)
-> - [How to Use Environment Files (.env) in Node.js - Tutorial (dotenv) | Youtube](https://www.youtube.com/watch?v=hZUNMYU4Kzo) 
-> - [How to Create a Express/Node + React Project | Node Backend + React Frontend | Youtube](https://www.youtube.com/watch?v=w3vs4a03y3I&t=523s)
+> - [How to Deploy MERN Application on Vercel? HOST Full-Stack MERN App to Vercel for Free | YouTube](https://www.youtube.com/watch?v=Cfi0mymfKiA&t=157s)
+> - [How to Use Environment Files (.env) in Node.js - Tutorial (dotenv) | YouTube](https://www.youtube.com/watch?v=hZUNMYU4Kzo) 
+> - [How to Create a Express/Node + React Project | Node Backend + React Frontend | YouTube](https://www.youtube.com/watch?v=w3vs4a03y3I&t=523s)
 
 > **Plataformas para pesquisa:**
 > - Google
