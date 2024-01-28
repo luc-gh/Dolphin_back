@@ -36,3 +36,8 @@ export let postLogin = () => {
         res.render("index");
     });
 }
+export let run = () => {
+    app.listen(process.env.SERVER_PORT, () => {
+        console.log("Servidor ativo na porta " + process.env.SERVER_PORT);
+    });
+}
