@@ -40,7 +40,8 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 20. Instalação do pacote cors (para recuperação de dados de origens diferentes)
 21. Instalação do pacote ```express-session``` (permite o armazenamento e recuperação de dados associados a um usuário durante sua interação com a aplicação)
 22. Instalação do pacote ```body-parser``` (utilizado para analisar dados no corpo das solicitações, permitindo acesso a eles)
-23. Instalação dos pacotes ejs, url e path, para testes
+23. Instalação dos pacotes ```ejs```, ```url``` e ```path```, para testes
+24. Uso do pacote chamado ```http-proxy-middleware``` para configurar um proxy no servidor Node.js
 
 ### Listagem de fontes ou referências de aprendizado
 
