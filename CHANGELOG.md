@@ -43,6 +43,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 23. Instalação dos pacotes ```ejs```, ```url``` e ```path```, para testes
 24. Uso do pacote chamado ```http-proxy-middleware``` para configurar um proxy no servidor Node.js
 25. Depois dos testes, reformatação completa
+26. Realização de testes no Insomnia
 
 ### Listagem de fontes ou referências de aprendizado
 
