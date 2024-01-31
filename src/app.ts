@@ -1,6 +1,7 @@
 //API
 import express from "express";
 import dotenv from "dotenv";
+import {postUser} from "./services/loginRoute.js";
 
 dotenv.config({path: ".env"});
 
@@ -10,6 +11,7 @@ const url = process.env.BASE_URL + ":" + process.env.DEFAULT_PORT;
 //Middleware
 app.use(express.json());
 
+/*
 app.post('/login/:id', (req, res) => {
     const {id} = req.params;
     const {login, pass} = req.body;
@@ -32,3 +34,6 @@ app.get('/login', (req, res) => {
 app.listen(process.env.DEFAULT_PORT, () => {
     console.log("API ativa na porta " + process.env.DEFAULT_PORT + ".")
 });
+*/
+
+postUser().then(r => console.log("OK"));
