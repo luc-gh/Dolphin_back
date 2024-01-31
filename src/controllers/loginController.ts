@@ -1,14 +1,16 @@
 import { run } from '../model/databaseConnection.js';
-import { Collection, Db } from 'mongodb';
+import {Collection, Db, MongoClient} from 'mongodb';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
 
 export async function addUser(login: string, password: string) {
     try {
-        const db: Db | null = await run(); // Aguarde a Promise ser resolvida
+        const [client, db]: [MongoClient, Db] = await run();  // Aguarde a Promise ser resolvida
 
-        if (db) {
+        await client.connect();
+
+        if (db !== null) {
             const cn = process.env.COLLECTION_NAME || ''; // Use || para fornecer um valor padrão
             let collection: Collection = db.collection(cn);
 
@@ -20,9 +22,8 @@ export async function addUser(login: string, password: string) {
 
             // Teste de adição de um novo documento à coleção
             let newValue = {
-                name: 'novo',
-                data: 'newData',
-                value: 50,
+                login: login,
+                senha: password
             };
 
             // Insere o novo documento na coleção

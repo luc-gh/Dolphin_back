@@ -18,7 +18,7 @@ export async function run() {
         await client.connect(); //Conexão cliente-servidor
         await client.db("admin").command({ping: 1});
         console.log("Conectado ao MongoDB!");
-        return client.db("Data");
+        return [client, client.db("Data")] as any;
     } catch (err) {
         await client.db("TestDB").command({ping: 0});
         console.log("Erro detectado: " + err);
