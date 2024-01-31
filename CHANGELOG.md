@@ -44,6 +44,9 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 24. Uso do pacote chamado ```http-proxy-middleware``` para configurar um proxy no servidor Node.js
 25. Depois dos testes, reformatação completa
 26. Realização de testes no Insomnia
+27. No arquivo [```databaseConnection```](src/model/databaseConnection.ts), criação de função de conexão, que retorna um cliente do MongoDB e um Banco de dados
+28. Criação de rota para adição de novo usuário no arquivo [```loginRoute```](src/services/loginRoute.ts)
+29. Adição de método para adicionar usuário ao banco de dados definido na conexão no arquivo [```loginController```](src/controllers/loginController.ts)
 
 ### Listagem de fontes ou referências de aprendizado
 
