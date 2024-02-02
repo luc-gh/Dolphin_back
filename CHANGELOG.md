@@ -68,4 +68,3 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 > - Arquivos .env devem ser colocados na raíz de um projeto Node
 > - O novo padrão de commits é o presente no repositório [iuricode/padroes-de-commits](https://github.com/iuricode/padroes-de-commits).
 > - O TS pode ser compilado em JS com o comando: ```npx tsc```
-> - 

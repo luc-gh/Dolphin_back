@@ -23,6 +23,7 @@ export async function postUser(){
     });
 }
 
+//Tests:
 app.listen(process.env.DEFAULT_PORT, () => {
     console.log("API ativa na porta " + process.env.DEFAULT_PORT + ".")
 });

@@ -3,7 +3,11 @@ import dotenv from "dotenv";
 
 dotenv.config({path: ".env"});
 
-const uri = "mongodb+srv://"+ process.env.DB_USERNAME + ":" + process.env.DB_PASSWORD + "@testdb.yi4lw6o.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://"
+    + process.env.DB_USERNAME
+    + ":"
+    + process.env.DB_PASSWORD
+    + "@testdb.yi4lw6o.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, {
     serverApi: {
