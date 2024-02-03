@@ -45,8 +45,8 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 25. Depois dos testes, reformatação completa
 26. Realização de testes no Insomnia
 27. No arquivo [```databaseConnection```](src/model/databaseConnection.ts), criação de função de conexão, que retorna um cliente do MongoDB e um Banco de dados
-28. Criação de rota para adição de novo usuário no arquivo [```loginRoute```](src/services/loginRoute.ts)
-29. Adição de método para adicionar usuário ao banco de dados definido na conexão no arquivo [```loginController```](src/controllers/loginController.ts)
+28. Criação de rota para adição de novo usuário no arquivo [```loginRoute```](src/services/loginService.ts)
+29. Adição de método para adicionar usuário ao banco de dados definido na conexão no arquivo [```loginController```](src/routes/loginRoute.ts)
 30. Correção na estrutura MVC
 
 ### Listagem de fontes ou referências de aprendizado
