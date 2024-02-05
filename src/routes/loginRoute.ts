@@ -19,7 +19,8 @@ router.get('/login', (req, res) => {
 
 //Novo usuário (rota da página de login)
 router.post('/login/:login', (req, res) => {
-    const {login: username, password} = req.body;
+    const {username, password} = req.body;
+    console.log(req.body)
     if (!username || !password) {
         res.status(400).send({
             message: "Não foram recebidos os dados necessários."
