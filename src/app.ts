@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import loginRoutes from "./routes/loginRoute.js";
+import {findClient} from "./services/loginService.js";
 
 dotenv.config({path: ".env"});
 
@@ -18,7 +19,7 @@ app.use(cors({
 }));
 
 //Rotas
-app.use('/', loginRoutes);
+//app.use('/', loginRoutes);
 
 //Exceções:
 process.on('uncaughtException', function (err) {
@@ -26,6 +27,8 @@ process.on('uncaughtException', function (err) {
 })
 
 //Tests:
+findClient("Lucas", "12345678");
+
 app.listen(process.env.SERVER_PORT, () => {
     console.log("API ativa na porta " + process.env.SERVER_PORT + ".");
 });
