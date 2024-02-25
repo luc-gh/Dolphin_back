@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d29a3be5-1fdf-45b9-9395-2806efb05260" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2b0E0qpF7wPbUUiE6qP4x9S0kel" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
+    "aspect.path.notification.shown": "true",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/conta/Documents/Programacao/Projeto/backend/build.gradle.kts",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\conta\Documents\Programacao\Projeto\backend\src\tests\public" />
+      <recent name="C:\Users\conta\Documents\Programacao\Projeto\backend" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.vercel-build">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="vercel-build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="vercel-build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.vercel-build" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d29a3be5-1fdf-45b9-9395-2806efb05260" name="Changes" comment="" />
+      <created>1705343375725</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705343375725</updated>
+      <workItem from="1705343376730" duration="2905000" />
+      <workItem from="1705351242294" duration="3359000" />
+      <workItem from="1705366514430" duration="474000" />
+      <workItem from="1705370453792" duration="16000" />
+      <workItem from="1705434914612" duration="904000" />
+      <workItem from="1705436215655" duration="1527000" />
+      <workItem from="1705437975559" duration="69000" />
+      <workItem from="1705438266227" duration="322000" />
+      <workItem from="1705455985604" duration="634000" />
+      <workItem from="1705511386315" duration="3805000" />
+      <workItem from="1705600458400" duration="112000" />
+      <workItem from="1705626038885" duration="845000" />
+      <workItem from="1705869207586" duration="2129000" />
+      <workItem from="1705872321601" duration="18000" />
+      <workItem from="1705920849369" duration="3261000" />
+      <workItem from="1705936814201" duration="2672000" />
+      <workItem from="1705943942954" duration="957000" />
+      <workItem from="1706027180546" duration="341000" />
+      <workItem from="1706097961005" duration="7000" />
+      <workItem from="1706115661892" duration="143000" />
+      <workItem from="1706186184168" duration="1731000" />
+      <workItem from="1706199757193" duration="2655000" />
+      <workItem from="1706209473795" duration="1886000" />
+      <workItem from="1706266714939" duration="4312000" />
+      <workItem from="1706296197499" duration="4713000" />
+      <workItem from="1706378395455" duration="9489000" />
+      <workItem from="1706452582181" duration="4000" />
+      <workItem from="1706478576358" duration="3595000" />
+      <workItem from="1706487454692" duration="789000" />
+      <workItem from="1706525293174" duration="704000" />
+      <workItem from="1706543108043" duration="86000" />
+      <workItem from="1706544358103" duration="257000" />
+      <workItem from="1706545402268" duration="9000" />
+      <workItem from="1706546220949" duration="241000" />
+      <workItem from="1706548468137" duration="32000" />
+      <workItem from="1706549848005" duration="10000" />
+      <workItem from="1706553077509" duration="18000" />
+      <workItem from="1706617950553" duration="4310000" />
+      <workItem from="1706631317019" duration="475000" />
+      <workItem from="1706631928964" duration="1491000" />
+      <workItem from="1706640665196" duration="2579000" />
+      <workItem from="1706664506354" duration="4588000" />
+      <workItem from="1706702260035" duration="2438000" />
+      <workItem from="1706706565455" duration="11000" />
+      <workItem from="1706719311413" duration="1891000" />
+      <workItem from="1706723090989" duration="9000" />
+      <workItem from="1706835740505" duration="460000" />
+      <workItem from="1706889433195" duration="487000" />
+      <workItem from="1706898155279" duration="844000" />
+      <workItem from="1706899805670" duration="1499000" />
+      <workItem from="1706985054979" duration="9070000" />
+      <workItem from="1707153991872" duration="681000" />
+      <workItem from="1707155209731" duration="1559000" />
+      <workItem from="1707158346730" duration="1159000" />
+      <workItem from="1707182834143" duration="193000" />
+      <workItem from="1707221737334" duration="4048000" />
+      <workItem from="1707244760484" duration="78000" />
+      <workItem from="1707245357307" duration="237000" />
+      <workItem from="1707307202885" duration="3778000" />
+      <workItem from="1707326734909" duration="818000" />
+      <workItem from="1707608781773" duration="620000" />
+      <workItem from="1708014438547" duration="6000" />
+      <workItem from="1708884868552" duration="1930000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="javascript:npm:ejs" />
+  </component>
+</project>
