@@ -48,16 +48,20 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 28. Criação de rota para adição de novo usuário no arquivo [```loginRoute```](src/services/loginService.ts)
 29. Adição de método para adicionar usuário ao banco de dados definido na conexão no arquivo [```loginController```](src/routes/loginRoute.ts)
 30. Correção na estrutura MVC
+31. Adição dos diretórios [api](api) e [public](public), além do arquivo [vercel.json](vercel.json), para o deploy
+32. 
 
 ### Listagem de fontes ou referências de aprendizado
 
 > **Artigos, vídeos e outras fontes:**
 > - [How to Deploy MERN Application on Vercel? HOST Full-Stack MERN App to Vercel for Free | YouTube](https://www.youtube.com/watch?v=Cfi0mymfKiA&t=157s)
+> - [Using Express.js with Vercel](https://vercel.com/guides/using-express-with-vercel)
 > - [How to Use Environment Files (.env) in Node.js - Tutorial (dotenv) | YouTube](https://www.youtube.com/watch?v=hZUNMYU4Kzo) 
 > - [How to Create a Express/Node + React Project | Node Backend + React Frontend | YouTube](https://www.youtube.com/watch?v=w3vs4a03y3I&t=523s)
 > - [Express cors middleware | Express](https://expressjs.com/en/resources/middleware/cors.html)
 > - [How ro fix __dirname not defined ES module | Flavio Copes](https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/)
 > - [SISTEMA DE LOGIN COM NODE JS | TUTORIAL DE JAVASCRIPT | YouTube](https://www.youtube.com/watch?v=rXWa9jtHu7g&t=583s)
+> - [Deploy an Express API to Vercel | Coding Garden](https://www.youtube.com/watch?v=B-T69_VP2Ls&t=290s)
 
 > **Plataformas para pesquisa:**
 > - Google

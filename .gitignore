@@ -23,9 +23,6 @@ lib-cov
 coverage
 *.lcov
 
-# Environment Variables
-.env
-
 # nyc test coverage
 .nyc_output
 
@@ -105,7 +102,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # Docusaurus cache and generated files
 .docusaurus

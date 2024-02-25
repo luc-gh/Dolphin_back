@@ -27,8 +27,10 @@ process.on('uncaughtException', function (err) {
 })
 
 //Tests:
-findClient("Lucas", "12345678");
+findClient("Lucas", "12345678").then(r => console.log("Busca concluída."));
 
 app.listen(process.env.SERVER_PORT, () => {
     console.log("API ativa na porta " + process.env.SERVER_PORT + ".");
 });
+
+export default app;
