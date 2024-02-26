@@ -29,5 +29,8 @@
 
     "allowImportingTsExtensions": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*",
+    "./api/*.ts"   /* To deploy */
+  ]
 }
