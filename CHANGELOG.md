@@ -44,12 +44,38 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 24. Uso do pacote chamado ```http-proxy-middleware``` para configurar um proxy no servidor Node.js
 25. Depois dos testes, reformatação completa
 26. Realização de testes no Insomnia
-27. No arquivo [```databaseConnection```](src/model/databaseConnection.ts), criação de função de conexão, que retorna um cliente do MongoDB e um Banco de dados
+27. No arquivo [```databaseConnection```](src/config/databaseConnection.ts), criação de função de conexão, que retorna um cliente do MongoDB e um Banco de dados
 28. Criação de rota para adição de novo usuário no arquivo [```loginRoute```](src/services/loginService.ts)
 29. Adição de método para adicionar usuário ao banco de dados definido na conexão no arquivo [```loginController```](src/routes/loginRoute.ts)
 30. Correção na estrutura MVC
 31. Adição dos diretórios [api](api) e [public](public), além do arquivo [vercel.json](vercel.json), para o deploy
-32. 
+32. Teste de Deploy 
+    
+    Para acessar a Vercel, usa-se o comando `vercel login --github`, apar fazer o login via Github.
+    Após isso, basta fazer a autenticação externa e retornar.
+    
+    No diretório [api](api), executa-se o comando `vercel --prod`, para iniciar o deploy. 
+    Seguem-se a seguir as respostas ao questionário:
+    ```
+    Vercel CLI 33.5.2
+    ? Set up and deploy “~\Documents\Programacao\Projeto\Dolphin_back\api”? [Y/n] y
+    ? Which scope do you want to deploy to? <user projects>
+    ? Link to existing project? [y/N] n
+    ? What’s your project’s name? dolphin
+    ? In which directory is your code located? ./
+    Local settings detected in vercel.json:
+    No framework detected. Default Project Settings:
+    - Build Command: `npm run vercel-build` or `npm run build`
+    - Development Command: None
+    - Install Command: `yarn install`, `pnpm install`, `npm install`, or `bun install`
+    - Output Directory: `public` if it exists, or `.`
+      ? Want to modify these settings? [y/N] n
+      🔗  Linked to lucs-projects-<code>/dolphin (created .vercel and added it to .gitignore)
+      🔍  Inspect: https://vercel.com/<vercel-code> [3s]
+      ✅  Production: https://dolphin-<code>.vercel.app [3s]
+    ```
+33. O Deploy falhou e foi excluído com o comando `vercel rm dolphin`
+    
 
 ### Listagem de fontes ou referências de aprendizado
 

@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config({path: ".env"});
 
-const uri = "mongodb+srv://oficial:" + process.env.DB_PASSWORD + "@testdb.yi4lw6o.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://oficial:"+ process.env.DB_PASS +"@testdb.iao5zmm.mongodb.net/?retryWrites=true&w=majority&appName=TestDB";
 
 const client = new MongoClient(uri, {
     serverApi: {
@@ -15,7 +15,7 @@ const client = new MongoClient(uri, {
 
 export async function getClientData(): Promise<[MongoClient, Db] | [null, null]> {
     try {
-        return [client, client.db(process.env.DB_LOG)];
+        return [client, client.db("TestDB")];
     } catch (err) {
         console.log("Erro detectado: " + err);
     } finally {

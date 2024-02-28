@@ -1,4 +1,4 @@
-import express from "express";
+import express, {NextFunction} from "express";
 import dotenv from "dotenv";
 import {addUser, findClient} from "../services/loginService.js";
 
@@ -11,30 +11,49 @@ app.use(express.json());
 let router = express.Router();
 
 router.get('/login', (req, res) => {
+    console.log("GET request trial started.");
     res.status(200).send({message: "Requisição GET OK"});
     console.log("GET OK");
     res.send({message: "GET OK"});
+    return res.json("GET OK");
 });
 
 //Novo usuário (rota da página de login)
 router.post('/login/:login', (req, res) => {
-    console.log("Post request trial started.");
+    console.log("POST request trial started.");
 
     const {username, password} = req.body;
-    console.log(req.body)
+    console.log(req.body);
 
     if (!username || !password) {
         res.status(400).send({
             message: "Não foram recebidos os dados necessários."
         });
         console.log("Não foram recebidos os dados necessários.")
-        return {};
+        return res.json("Erro: não foram recebidos os dados.");
     }
     console.log("Username recebido: " + username);
     console.log("Senha recebida: " + password);
-    addUser(username, password).then(() => console.log("Usuário adicionado."));  //Serviço
+    addUser(username, password).then(() => res.json("Usuário adicionado."));  //Serviço
 
-    findClient(username, password).then(r => {console.log("loginRoute [end]");});
+    findClient(username, password).then(r => {return res.json("Usuário encontrado.")});
+});
+
+router.delete('/login/delete', (req, res) => {
+    console.log("DELETE request trial started.");
+
+    const {username, password} = req.body;
+    console.log(req.body);
+
+    if (!username || !password) {
+        res.status(400).send({
+            message: "Não foram recebidos os dados necessários."
+        });
+        console.log("Não foram recebidos os dados necessários.")
+        return res.json("Erro: não foram recebidos os dados.");
+    }
+
+
 });
 
 export default router;

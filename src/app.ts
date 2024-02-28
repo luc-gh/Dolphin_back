@@ -19,18 +19,13 @@ app.use(cors({
 }));
 
 //Rotas
-//app.use('/', loginRoutes);
+app.use('/', loginRoutes);
 
 //Exceções:
 process.on('uncaughtException', function (err) {
     console.log(err);
 })
 
-//Tests:
-findClient("Lucas", "12345678").then(r => console.log("Busca concluída."));
-
-app.listen(process.env.SERVER_PORT, () => {
-    console.log("API ativa na porta " + process.env.SERVER_PORT + ".");
-});
+app.listen(3000, ()=>{console.log("Running")});
 
 export default app;

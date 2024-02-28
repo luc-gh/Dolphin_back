@@ -1,4 +1,4 @@
-import { getClientData } from '../model/databaseConnection.js';
+import { getClientData } from '../config/databaseConnection.js';
 import {Collection, Db, MongoClient, ServerApiVersion} from "mongodb";
 import dotenv from "dotenv";
 
@@ -19,7 +19,7 @@ export async function findClient(login: string, password: string) {
         await client.connect();
         let db: Db = client.db(process.env.DB_LOG);
 
-        const cn = process.env.COLLECTION_NAME || '';
+        const cn = "Collection";
         const collection: Collection = db.collection(cn);
         const value = await collection.findOne({ login: login, password: password }); // Use findOne instead of find
         if (value) {
@@ -47,7 +47,7 @@ export async function addUser(login: string, password: string) {
 
         console.info("Adição de usuário.");
 
-        const cn = process.env.COLLECTION_NAME || ''; // "||" fornece um valor padrão
+        const cn = "Collection"; // "||" fornece um valor padrão
         let collection: Collection = db.collection(cn);
 
         // Recupera todos os documentos da coleção e os coloca em um array
@@ -67,6 +67,50 @@ export async function addUser(login: string, password: string) {
         console.log('Novo dado inserido: ' + result.insertedId);
 
         //Verificação de atualização:
+        docs = await collection.find({}).toArray();
+
+        console.log('Novos documentos da coleção:');
+        console.log(docs);
+    } catch (error) {
+        console.error('Ocorreu um erro:', error);
+    } finally {
+        console.log("Inserção completa, se feita corretamente.")
+    }
+}
+
+export async function deleteUser(login: string, password: string){
+    try {
+        const [client, db]: [MongoClient, Db] | [null, null] = await getClientData();  // Chamando banco de dados
+
+        if (!client || !db) {
+            console.error("[addUser] Falha na conexão com o banco de dados.");
+            return;
+        }
+
+        await client.connect();  // Conectando com o cliente
+        await db.command({ping: 1});
+
+        console.info("Adição de usuário.");
+
+        const cn = "Collection"; // "||" fornece um valor padrão
+        let collection: Collection = db.collection(cn);
+
+        // Recupera todos os documentos da coleção e os coloca em um array
+        let docs = await collection.find({}).toArray();
+
+        console.log('Documentos atuais da coleção:');
+        console.log(docs);
+
+        // Teste de adição de um novo documento à coleção
+        let value = {
+            login: login,
+            senha: password
+        };
+
+        //Exclusão
+        if (await collection.findOne(value)) await collection.deleteOne(value);
+
+        //Verificação de atualização
         docs = await collection.find({}).toArray();
 
         console.log('Novos documentos da coleção:');
