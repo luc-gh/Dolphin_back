@@ -21,21 +21,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 15. Instalação de definições de tipo para Axios, Mongoose e Express 
 16. Substituição de todos os arquivos JavaScript por arquivos TypeScript
 17. Reformatação de projeto e adição de scripts de execução no arquivo [```package.json```](package.json)
-18. Alteração no formato de execução com o TS: 
-    > Uso do comando ```npm run dev``` só foi permitido devido ao uso do script (no arquivo [```package.json```](package.json)):
-    ```
-    (...)
-    "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.ts",
-    "dev": "tsx watch src/app.ts",
-    "build": "tsc"
-    }, 
-    "type": "module",
-    (...)
-    ``` 
-    > 
-    > Além disso, a execução isolada de arquivos TS é feita com o comando ```tsx <nome-do-arquivo>.ts```. 
+18. Alteração no formato de execução com o TS [1]
 19. Mudança em nomes de variáveis de ambiente
 20. Instalação do pacote cors (para recuperação de dados de origens diferentes)
 21. Instalação do pacote ```express-session``` (permite o armazenamento e recuperação de dados associados a um usuário durante sua interação com a aplicação)
@@ -49,8 +35,52 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 29. Adição de método para adicionar usuário ao banco de dados definido na conexão no arquivo [```loginController```](src/routes/loginRoute.ts)
 30. Correção na estrutura MVC
 31. Adição dos diretórios [api](api) e [public](public), além do arquivo [vercel.json](vercel.json), para o deploy
-32. Teste de Deploy 
-    
+32. Teste de Deploy [2]
+33. O Deploy falhou e foi excluído com o comando `vercel rm dolphin`
+34. Mudança na estrutura e no provedor para o deploy: [Render](https://render.com/)
+35. 
+
+### Listagem de fontes ou referências de aprendizado
+
+> **Artigos, vídeos e outras fontes:**
+> - [How to Deploy MERN Application on Vercel? HOST Full-Stack MERN App to Vercel for Free | YouTube](https://www.youtube.com/watch?v=Cfi0mymfKiA&t=157s)
+> - [Using Express.js with Vercel](https://vercel.com/guides/using-express-with-vercel)
+> - [How to Use Environment Files (.env) in Node.js - Tutorial (dotenv) | YouTube](https://www.youtube.com/watch?v=hZUNMYU4Kzo) 
+> - [How to Create a Express/Node + React Project | Node Backend + React Frontend | YouTube](https://www.youtube.com/watch?v=w3vs4a03y3I&t=523s)
+> - [Express cors middleware | Express](https://expressjs.com/en/resources/middleware/cors.html)
+> - [How ro fix __dirname not defined ES module | Flavio Copes](https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/)
+> - [SISTEMA DE LOGIN COM NODE JS | TUTORIAL DE JAVASCRIPT | YouTube](https://www.youtube.com/watch?v=rXWa9jtHu7g&t=583s)
+> - [Deploy an Express API to Vercel | Coding Garden](https://www.youtube.com/watch?v=B-T69_VP2Ls&t=290s)
+
+> **Plataformas para pesquisa:**
+> - Google
+> - ChatGPT
+> - Github
+
+**Conceitos ou princípios assumidos**
+ 
+- Arquivos .env devem ser colocados na raíz de um projeto Node
+- O novo padrão de commits é o presente no repositório [iuricode/padroes-de-commits](https://github.com/iuricode/padroes-de-commits).
+- O TS pode ser compilado em JS com o comando: ```npx tsc```
+- Uso do Render para o deploy
+- [1]:
+
+    Uso do comando ```npm run dev``` só foi permitido devido ao uso do script (no arquivo [```package.json```](package.json)):
+    ```
+    (...)
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.ts",
+    "dev": "tsx watch src/app.ts",
+    "build": "tsc"
+    },
+    "type": "module",
+    (...)
+    ```
+
+    Além disso, a execução isolada de arquivos TS é feita com o comando ```tsx <nome-do-arquivo>.ts```. 
+- [2]:
+
     Para acessar a Vercel, usa-se o comando `vercel login --github`, apar fazer o login via Github.
     Após isso, basta fazer a autenticação externa e retornar.
     
@@ -74,28 +104,17 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
       🔍  Inspect: https://vercel.com/<vercel-code> [3s]
       ✅  Production: https://dolphin-<code>.vercel.app [3s]
     ```
-33. O Deploy falhou e foi excluído com o comando `vercel rm dolphin`
-    
-
-### Listagem de fontes ou referências de aprendizado
-
-> **Artigos, vídeos e outras fontes:**
-> - [How to Deploy MERN Application on Vercel? HOST Full-Stack MERN App to Vercel for Free | YouTube](https://www.youtube.com/watch?v=Cfi0mymfKiA&t=157s)
-> - [Using Express.js with Vercel](https://vercel.com/guides/using-express-with-vercel)
-> - [How to Use Environment Files (.env) in Node.js - Tutorial (dotenv) | YouTube](https://www.youtube.com/watch?v=hZUNMYU4Kzo) 
-> - [How to Create a Express/Node + React Project | Node Backend + React Frontend | YouTube](https://www.youtube.com/watch?v=w3vs4a03y3I&t=523s)
-> - [Express cors middleware | Express](https://expressjs.com/en/resources/middleware/cors.html)
-> - [How ro fix __dirname not defined ES module | Flavio Copes](https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/)
-> - [SISTEMA DE LOGIN COM NODE JS | TUTORIAL DE JAVASCRIPT | YouTube](https://www.youtube.com/watch?v=rXWa9jtHu7g&t=583s)
-> - [Deploy an Express API to Vercel | Coding Garden](https://www.youtube.com/watch?v=B-T69_VP2Ls&t=290s)
-
-> **Plataformas para pesquisa:**
-> - Google
-> - ChatGPT
-> - Github
-
-> **Conceitos ou princípios assumidos**
-> 
-> - Arquivos .env devem ser colocados na raíz de um projeto Node
-> - O novo padrão de commits é o presente no repositório [iuricode/padroes-de-commits](https://github.com/iuricode/padroes-de-commits).
-> - O TS pode ser compilado em JS com o comando: ```npx tsc```
+- Para realizar deploys no Render, basta acessar o [dashboard](https://dashboard.render.com/) na conta do Github onde o repositório
+  está presente e clicar em `New +`. Basta escolher o tipo de projeto e adicionar suas especificações de deployment.
+- Para este projeto, foi escolhida a opção **Web Service**, com carregamento e implantação a partir de um repositório Git,
+  com as seguintes definições:
+  - Name: Dolphin
+  - Region: Frankfurt
+  - Branch: develop (alterado posteriormente)
+  - Root Directory: `/`
+  - Runtime: Node
+  - Build command: `yarn install && yarn build`
+  - Start command: `node dist/app.js`
+  - Instance Type: Free
+  - Environment Variables: Added from the local .env file
+  Após isso, basta clicar em "Create Web Service".

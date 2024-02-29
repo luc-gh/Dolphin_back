@@ -12,6 +12,7 @@ let router = express.Router();
 
 router.get('/login', (req, res) => {
     console.log("GET request trial started.");
+
     res.status(200).send({message: "Requisição GET OK"});
     console.log("GET OK");
     res.send({message: "GET OK"});
@@ -19,7 +20,7 @@ router.get('/login', (req, res) => {
 });
 
 //Novo usuário (rota da página de login)
-router.post('/login/:login', (req, res) => {
+router.post('/login', (req, res) => {
     console.log("POST request trial started.");
 
     const {username, password} = req.body;
@@ -39,7 +40,7 @@ router.post('/login/:login', (req, res) => {
     findClient(username, password).then(r => {return res.json("Usuário encontrado.")});
 });
 
-router.delete('/login/delete', (req, res) => {
+router.delete('/login', (req, res) => {
     console.log("DELETE request trial started.");
 
     const {username, password} = req.body;
@@ -53,7 +54,7 @@ router.delete('/login/delete', (req, res) => {
         return res.json("Erro: não foram recebidos os dados.");
     }
 
-
+    //Incompleto
 });
 
 export default router;
