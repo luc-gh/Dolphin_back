@@ -32,7 +32,7 @@ export async function addUser(login: string, password: string) {
         // Teste de adição de um novo documento à coleção
         let newValue = {
             login: login,
-            senha: password
+            password: password
         };
 
         // Insere o novo documento na coleção
@@ -55,7 +55,12 @@ export async function deleteUser(login: string, password: string){
     // @ts-ignore
     const [client, db, collection]: [MongoClient, Db, Collection] | undefined = await getDBData();
 
+    collection.remove({login: login, password: password});
 
+    //Verificação de atualização:
+    let docs = await collection.find({}).toArray();
+    console.log('Novos documentos da coleção:');
+    console.log(docs);
 }
 
 export async function putUser(){
