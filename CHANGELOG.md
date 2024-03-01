@@ -21,7 +21,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 15. Instalação de definições de tipo para Axios, Mongoose e Express 
 16. Substituição de todos os arquivos JavaScript por arquivos TypeScript
 17. Reformatação de projeto e adição de scripts de execução no arquivo [```package.json```](package.json)
-18. Alteração no formato de execução com o TS [1]
+18. Alteração no formato de execução com o TS
 19. Mudança em nomes de variáveis de ambiente
 20. Instalação do pacote cors (para recuperação de dados de origens diferentes)
 21. Instalação do pacote ```express-session``` (permite o armazenamento e recuperação de dados associados a um usuário durante sua interação com a aplicação)
@@ -35,7 +35,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 29. Adição de método para adicionar usuário ao banco de dados definido na conexão no arquivo [```loginController```](src/routes/loginRoute.ts)
 30. Correção na estrutura MVC
 31. Adição dos diretórios [api](api) e [public](public), além do arquivo [vercel.json](vercel.json), para o deploy
-32. Teste de Deploy [2]
+32. Teste de Deploy no Render
 33. O Deploy falhou e foi excluído com o comando `vercel rm dolphin`
 34. Mudança na estrutura e no provedor para o deploy: [Render](https://render.com/)
 35. Criação do arquivo [API-LOG](API-LOG.md), para documentar a API
@@ -63,9 +63,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 - O novo padrão de commits é o presente no repositório [iuricode/padroes-de-commits](https://github.com/iuricode/padroes-de-commits).
 - O TS pode ser compilado em JS com o comando: ```npx tsc```
 - Uso do Render para o deploy
-- [1]:
-
-    Uso do comando ```npm run dev``` só foi permitido devido ao uso do script (no arquivo [```package.json```](package.json)):
+- Uso do comando ```npm run dev``` só foi permitido devido ao uso do script (no arquivo [```package.json```](package.json)):
     ```
     (...)
     "scripts": {
@@ -78,35 +76,11 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
     (...)
     ```
 
-    Além disso, a execução isolada de arquivos TS é feita com o comando ```tsx <nome-do-arquivo>.ts```. 
-- [2]:
-
-    Para acessar a Vercel, usa-se o comando `vercel login --github`, apar fazer o login via Github.
-    Após isso, basta fazer a autenticação externa e retornar.
-    
-    No diretório [api](api), executa-se o comando `vercel --prod`, para iniciar o deploy. 
-    Seguem-se a seguir as respostas ao questionário:
-    ```
-    Vercel CLI 33.5.2
-    ? Set up and deploy “~\Documents\Programacao\Projeto\Dolphin_back\api”? [Y/n] y
-    ? Which scope do you want to deploy to? <user projects>
-    ? Link to existing project? [y/N] n
-    ? What’s your project’s name? dolphin
-    ? In which directory is your code located? ./
-    Local settings detected in vercel.json:
-    No framework detected. Default Project Settings:
-    - Build Command: `npm run vercel-build` or `npm run build`
-    - Development Command: None
-    - Install Command: `yarn install`, `pnpm install`, `npm install`, or `bun install`
-    - Output Directory: `public` if it exists, or `.`
-      ? Want to modify these settings? [y/N] n
-      🔗  Linked to lucs-projects-<code>/dolphin (created .vercel and added it to .gitignore)
-      🔍  Inspect: https://vercel.com/<vercel-code> [3s]
-      ✅  Production: https://dolphin-<code>.vercel.app [3s]
-    ```
+    Além disso, a execução isolada de arquivos TS é feita com o comando ```tsx <nome-do-arquivo>.ts```.
 - Para realizar deploys no Render, basta acessar o [dashboard](https://dashboard.render.com/) na conta do Github onde o repositório
-  está presente e clicar em `New +`. Basta escolher o tipo de projeto e adicionar suas especificações de deployment.
-- Para este projeto, foi escolhida a opção **Web Service**, com carregamento e implantação a partir de um repositório Git,
+  está presente e clicar em `New +`. Basta escolher o tipo de projeto e adicionar suas especificações de deployment. 
+
+  Para este projeto, foi escolhida a opção **Web Service**, com carregamento e implantação a partir de um repositório Git,
   com as seguintes definições:
   - Name: Dolphin
   - Region: Frankfurt

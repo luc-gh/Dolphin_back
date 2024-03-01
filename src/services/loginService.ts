@@ -3,15 +3,9 @@ import {Collection, Db, MongoClient} from "mongodb";
 
 export async function findClient(login: string, password: string) {
     try {
-        const [client, db]: [MongoClient, Db] | [null, null] = await getClientData();  // Chamando banco de dados
+        // @ts-ignore
+        const [client, db, collection]: [MongoClient, Db, Collection] | undefined = await getDBData();
 
-        if (!client || !db) {
-            console.error("[findClient] Falha na conexão com o banco de dados.");
-            return;
-        }
-
-        const cn = "Collection";
-        const collection: Collection = db.collection(cn);
         const value = await collection.findOne({ login: login, password: password }); // Use findOne instead of find
         if (value) {
             console.log("Value:", value);
@@ -26,20 +20,8 @@ export async function findClient(login: string, password: string) {
 
 export async function addUser(login: string, password: string) {
     try {
-        const [client, db]: [MongoClient, Db] | [null, null] = await getClientData();  // Chamando banco de dados
-
-        if (!client || !db) {
-            console.error("[addUser] Falha na conexão com o banco de dados.");
-            return;
-        }
-
-        await client.connect();  // Conectando com o cliente
-        await db.command({ping: 1});
-
-        console.info("Adição de usuário.");
-
-        const cn = "Collection"; // "||" fornece um valor padrão
-        let collection: Collection = db.collection(cn);
+        // @ts-ignore
+        const [client, db, collection]: [MongoClient, Db, Collection] | undefined = await getDBData();
 
         // Recupera todos os documentos da coleção e os coloca em um array
         let docs = await collection.find({}).toArray();
@@ -70,5 +52,29 @@ export async function addUser(login: string, password: string) {
 }
 
 export async function deleteUser(login: string, password: string){
+    // @ts-ignore
+    const [client, db, collection]: [MongoClient, Db, Collection] | undefined = await getDBData();
 
+
+}
+
+export async function putUser(){
+
+}
+
+async function getDBData(){
+    const [client, db]: [MongoClient, Db] | [null, null] = await getClientData();  // Chamando banco de dados
+
+    if (!client || !db) {
+        console.error("Falha na conexão com o banco de dados.");
+        return;
+    }
+
+    await client.connect();  // Conectando com o cliente
+    await db.command({ping: 1});
+
+    let name = "Collection";
+    let collection: Collection = db.collection(name);
+
+    return [client, db, collection];
 }
