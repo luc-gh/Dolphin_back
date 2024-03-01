@@ -1,4 +1,4 @@
-import express, {NextFunction} from "express";
+import express from "express";
 import dotenv from "dotenv";
 import {addUser, findClient} from "../services/loginService.js";
 

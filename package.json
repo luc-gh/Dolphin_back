@@ -8,17 +8,17 @@
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
     "build": "npx tsc",
-    "vercel-build": "vercel run"
+    "postinstall": "npm prune"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/debug": "^5.10.2",
     "axios": "^1.6.5",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "debug": "^4.3.4",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
@@ -31,10 +31,10 @@
     "morgan": "^1.10.0",
     "nodemon": "^3.0.2",
     "path": "^0.12.7",
+    "roarr": "^7.21.0",
     "ts-node": "^10.9.2",
     "url": "^0.11.3",
-    "uuid": "^9.0.1",
-    "vercel": "^32.3.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

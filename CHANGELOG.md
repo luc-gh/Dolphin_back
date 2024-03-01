@@ -38,7 +38,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 32. Teste de Deploy [2]
 33. O Deploy falhou e foi excluído com o comando `vercel rm dolphin`
 34. Mudança na estrutura e no provedor para o deploy: [Render](https://render.com/)
-35. 
+35. Criação do arquivo [API-LOG](API-LOG.md), para documentar a API
 
 ### Listagem de fontes ou referências de aprendizado
 
