@@ -39,6 +39,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 33. O Deploy falhou e foi excluído com o comando `vercel rm dolphin`
 34. Mudança na estrutura e no provedor para o deploy: [Render](https://render.com/)
 35. Criação do arquivo [API-LOG](API-LOG.md), para documentar a API
+36. Criação do arquivo [DB-LOG.md](DB-LOG.md) para explicar as definições sobre o banco de dados.
 
 ### Listagem de fontes ou referências de aprendizado
 
