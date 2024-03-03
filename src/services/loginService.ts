@@ -1,7 +1,7 @@
 import { getDBData } from '../config/databaseConnection.js';
 import {Collection, Db, MongoClient} from "mongodb";
 
-export async function findClient(username: string, password: string) {
+export async function findUser(username: string, password: string) {
     try {
         // @ts-ignore
         const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
@@ -9,13 +9,15 @@ export async function findClient(username: string, password: string) {
         const value = await users.findOne({ login: username, password: password });
         if (value) {
             console.log("> Usuário encontrado: ", value.toArray());
-            return;
+            return true;
         } else {
             console.log("> Não foi encontrado um usuário com estes dados");
+            return false;
         }
     } catch (err) {
         console.error(err);
     }
+    return false;
 }
 
 export async function addUser(username: string, password: string) {
@@ -29,14 +31,8 @@ export async function addUser(username: string, password: string) {
         console.log('> Documentos atuais da coleção' + users.name + ': ');
         console.log(docs);
 
-        // Teste de adição de um novo documento à coleção
-        let newValue = {
-            login: username,
-            password: password
-        };
-
         // Insere o novo documento na coleção
-        const result = await users.insertOne(newValue);
+        const result = await users.insertOne({username: username, password: password});
         console.log('> Novo dado inserido na coleção' + users.name + ': ' + result.insertedId);
 
         //Verificação de atualização:
@@ -47,7 +43,7 @@ export async function addUser(username: string, password: string) {
     } catch (error) {
         console.error('> Ocorreu um erro:', error);
     } finally {
-        console.log("Inserção completa, se feita corretamente.")
+        console.log("> Inserção completa, se feita corretamente.")
     }
 }
 
@@ -59,7 +55,7 @@ export async function deleteUser(username: string, password: string){
 
     //Verificação de atualização:
     let docs = await users.find({}).toArray();
-    console.log('Novos documentos da coleção:');
+    console.log('> Novos documentos da coleção:');
     console.log(docs);
 }
 
