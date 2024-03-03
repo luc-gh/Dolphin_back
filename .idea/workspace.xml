@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d29a3be5-1fdf-45b9-9395-2806efb05260" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB-LOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/DB-LOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Insomnia_tests.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Insomnia_tests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/databaseConnection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/databaseConnection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/loginService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/loginService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +213,7 @@
       <workItem from="1709308964911" duration="797000" />
       <workItem from="1709320256368" duration="14000" />
       <workItem from="1709321646157" duration="86000" />
-      <workItem from="1709400808452" duration="3181000" />
+      <workItem from="1709400808452" duration="12871000" />
     </task>
     <servers />
   </component>

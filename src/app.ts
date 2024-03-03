@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import loginRoutes from "./routes/loginRoute.js";
-import {findClient} from "./services/loginService.js";
+import { collectionsCreator } from "./config/databaseConnection.js";
 
 dotenv.config({path: ".env"});
 
@@ -18,6 +18,9 @@ app.use(cors({
     origin: ['http://localhost:3000']
 }));
 
+//Database
+collectionsCreator();
+
 //Rotas
 app.use('/', loginRoutes);
 
@@ -26,6 +29,6 @@ process.on('uncaughtException', function (err) {
     console.log(err);
 })
 
-app.listen(3000, ()=>{console.log("Running")});
+app.listen(3000, ()=>{console.log("Running at port 3000")});
 
 export default app;
