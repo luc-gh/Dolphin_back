@@ -1,24 +1,24 @@
 import { getDBData } from '../config/databaseConnection.js';
 import {Collection, Db, MongoClient} from "mongodb";
 
-export async function findClient(login: string, password: string) {
+export async function findClient(username: string, password: string) {
     try {
         // @ts-ignore
         const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-        const value = await users.findOne({ login: login, password: password }); // Use findOne instead of find
+        const value = await users.findOne({ login: username, password: password });
         if (value) {
-            console.log("Value:", value);
+            console.log("> Usuário encontrado: ", value.toArray());
             return;
         } else {
-            console.log("No matching client found");
+            console.log("> Não foi encontrado um usuário com estes dados");
         }
     } catch (err) {
         console.error(err);
     }
 }
 
-export async function addUser(login: string, password: string) {
+export async function addUser(username: string, password: string) {
     try {
         // @ts-ignore
         const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
@@ -26,36 +26,36 @@ export async function addUser(login: string, password: string) {
         // Recupera todos os documentos da coleção e os coloca em um array
         let docs = await users.find({}).toArray();
 
-        console.log('Documentos atuais da coleção:');
+        console.log('> Documentos atuais da coleção' + users.name + ': ');
         console.log(docs);
 
         // Teste de adição de um novo documento à coleção
         let newValue = {
-            login: login,
+            login: username,
             password: password
         };
 
         // Insere o novo documento na coleção
         const result = await users.insertOne(newValue);
-        console.log('Novo dado inserido: ' + result.insertedId);
+        console.log('> Novo dado inserido na coleção' + users.name + ': ' + result.insertedId);
 
         //Verificação de atualização:
         docs = await users.find({}).toArray();
 
-        console.log('Novos documentos da coleção:');
+        console.log('> Novos documentos da coleção' + users.name + ': ');
         console.log(docs);
     } catch (error) {
-        console.error('Ocorreu um erro:', error);
+        console.error('> Ocorreu um erro:', error);
     } finally {
         console.log("Inserção completa, se feita corretamente.")
     }
 }
 
-export async function deleteUser(login: string, password: string){
+export async function deleteUser(username: string, password: string){
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-    users.remove({login: login, password: password});
+    users.remove({username: username, password: password});
 
     //Verificação de atualização:
     let docs = await users.find({}).toArray();
@@ -63,7 +63,28 @@ export async function deleteUser(login: string, password: string){
     console.log(docs);
 }
 
-export async function putUser(){
+export async function putUser(username?: string, password?: string, newUsername?: string, newPassword?: string){
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
+    if (username?.length !== 0) {
+        users.findOneAndReplace(
+            { username: String(username) },
+            { $set: {username: newUsername} },
+            { returnOriginal: false }
+        );
+        username = newUsername;
+    }
+
+    if (password?.length !== 0) {
+        users.findOneAndReplace(
+            { password: String(password) },
+            { $set: {password: newPassword} },
+            { returnOriginal: false }
+        );
+        password = newPassword;
+    }
+
+    console.log("Atualização de usuário: " + users.findOne({username: username, password: password}));
 }
 

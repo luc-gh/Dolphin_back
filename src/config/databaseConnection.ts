@@ -14,7 +14,7 @@ let client = new MongoClient(uri, {
 });
 
 export async function collectionsCreator() {
-    console.log("async collectionCreator");
+    console.log("> Chamada a collectionCreator()");
     const ucn = process.env.USER_COLLECTION_NAME + "";
     const ncn = process.env.NOTE_COLLECTION_NAME + "";
 
@@ -44,14 +44,14 @@ async function getClientData(): Promise<[MongoClient, Db] | [null, null]> {
     client = await client.connect();
     let db = client.db(process.env.DB_NAME);
     try {
-        console.log("getClientData");
+        console.log("> Chamada à getClientData()");
         return [client, db];
     }
     catch (err) {
-        console.log("> Erro detectado: " + err);
+        console.log("> Erro detectado em getClientData(): " + err);
     }
     finally {
-        console.log("getClientData finally: " + await client.close());
+        console.log("> Client close from getClientData(): " + await client.close());
     }
 
     return [null, null];
@@ -60,7 +60,7 @@ async function getClientData(): Promise<[MongoClient, Db] | [null, null]> {
 getClientData().catch(console.dir);
 
 export async function getDBData(){
-    console.log("getDBData");
+    console.log("> Chamada a getDBData()");
     const [client, db]: [MongoClient, Db] | [null, null] = await getClientData();  // Chamando banco de dados
 
     if (!client || !db) {
