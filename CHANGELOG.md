@@ -40,7 +40,8 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 34. Mudança na estrutura e no provedor para o deploy: [Render](https://render.com/)
 35. Criação do arquivo [API-LOG](API-LOG.md), para documentar a API
 36. Criação do arquivo [DB-LOG.md](DB-LOG.md) para explicar as definições sobre o banco de dados.
-37. Altarações no serviço e nas rotas de login
+37. Alterações no serviço e nas rotas de login
+38. Mudança na lógica de alteração de dados (PUT) na rota de signin
 
 ### Listagem de fontes ou referências de aprendizado
 
