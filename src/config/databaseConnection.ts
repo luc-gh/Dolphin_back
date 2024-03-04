@@ -13,7 +13,7 @@ let client = new MongoClient(uri, {
     }
 });
 
-export async function collectionsCreator() {
+export async function collectionsCreator(){
     console.log("> Chamada a collectionCreator()");
     const ucn = process.env.USER_COLLECTION_NAME + "";
     const ncn = process.env.NOTE_COLLECTION_NAME + "";

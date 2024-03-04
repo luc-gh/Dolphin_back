@@ -19,7 +19,10 @@ app.use(cors({
 }));
 
 //Database
-collectionsCreator();
+const cc = collectionsCreator();
+cc.then(()=>{
+    console.log("Coleções verificadas.");
+});
 
 //Rotas
 app.use('/', loginRoutes);

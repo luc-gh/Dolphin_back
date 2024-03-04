@@ -12,10 +12,7 @@ let router = express.Router();
 
 router.get('/login', (req, res) => {
     console.log("GET login request trial started.");
-
-    res.status(200).send({message: "Requisição GET login OK"});
-    res.send({message: "GET OK"});
-    return res.json("GET OK");
+    return res.status(200).send({message: "Requisição GET login OK"});
 });
 
 router.post('/login', (req, res) => {

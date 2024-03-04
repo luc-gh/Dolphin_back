@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d29a3be5-1fdf-45b9-9395-2806efb05260" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-LOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/API-LOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Insomnia_tests.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/Insomnia_tests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/databaseConnection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/databaseConnection.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/loginRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/loginRoute.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/loginService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/loginService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +216,8 @@
       <workItem from="1709400808452" duration="12926000" />
       <workItem from="1709479022149" duration="1538000" />
       <workItem from="1709487287806" duration="1452000" />
+      <workItem from="1709501051381" duration="1000000" />
+      <workItem from="1709512538521" duration="2085000" />
     </task>
     <servers />
   </component>
