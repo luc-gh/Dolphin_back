@@ -42,6 +42,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 36. Criação do arquivo [DB-LOG.md](DB-LOG.md) para explicar as definições sobre o banco de dados.
 37. Alterações no serviço e nas rotas de login
 38. Mudança na lógica de alteração de dados (PUT) na rota de signin
+39. Alteração lógica na exclusão (DELETE HTTP request) de usuário
 
 ### Listagem de fontes ou referências de aprendizado
 

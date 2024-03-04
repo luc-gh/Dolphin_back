@@ -61,7 +61,7 @@ router.post('/signin', (req, res) => {
     ;
 });
 
-router.delete('/account', (req, res) => {
+router.delete('/account', async (req, res) => {
     console.log("DELETE User request trial started.");
 
     const {username, password} = req.body;
@@ -74,14 +74,11 @@ router.delete('/account', (req, res) => {
         return res.json("Erro: não foram recebidos os dados.");
     }
 
-    deleteUser(username, password)
-        .then(r => {
-            return res.json("Usuário deletado.");
-        })
-        .catch(err => {
-            return res.status(402).json("Erro detectado: " + err.name)
-        })
-    ;
+    let c = await deleteUser(username, password).then();
+
+    if (c) return res.status(200).send({message: "Usuário deletado."});
+    else return res.status(400).send({message: "Falha na exclusão."});
+
 });
 
 router.put('/account', async (req, res) => {

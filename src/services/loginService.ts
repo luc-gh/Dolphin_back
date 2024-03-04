@@ -50,12 +50,11 @@ export async function deleteUser(username: string, password: string){
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-    users.deleteOne({username: username, password: password});
+    await users.deleteOne({username: username, password: password});
 
     //Verificação de atualização:
-    const deletedDocument = db.collection.findOne({username: username, password: password});
-    if (deletedDocument === null) console.log("O documento foi excluído com sucesso.");
-    else console.log("O documento ainda existe na coleção.");
+    const deletedDocument = await users.findOne({username: username, password: password});
+    return deletedDocument === null;
 }
 
 export async function putUser(username: string, password: string, newUsername: string, newPassword: string){
