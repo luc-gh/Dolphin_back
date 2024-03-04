@@ -1,11 +1,10 @@
-import { getDBData } from '../config/databaseConnection.js';
+import {getDBData} from '../config/databaseConnection.js';
 import {Collection, Db, MongoClient} from "mongodb";
 
 export async function findUser(username: string, password: string) {
     try {
         // @ts-ignore
         const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
-
         const value = await users.findOne({ login: username, password: password });
         if (value) {
             console.log("> Usuário encontrado: ", value.toArray());
@@ -16,8 +15,8 @@ export async function findUser(username: string, password: string) {
         }
     } catch (err) {
         console.error(err);
+        return false;
     }
-    return false;
 }
 
 export async function addUser(username: string, password: string) {
@@ -80,10 +79,8 @@ export async function putUser(username: string, password: string, newUsername: s
         );
         password = newPassword;
     }
-    console.log("Usuário atualizado.");
-    if (users.findOne({username: newUsername, password: newPassword}) !== null) return true;
-    console.log("Erro.");
-    return false;
+
+    return await users.findOne({username: newUsername, password: newPassword}).then();
 }
 
 

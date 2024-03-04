@@ -89,23 +89,18 @@ router.put('/account', async (req, res) => {
 
     const {username, password, newUsername, newPassword} = req.body;
 
-    if (!username || !password) {
+    if (!username || !password || !newUsername || !newPassword) {
         return res.status(400).send({
             message: "Não foram recebidos os dados necessários."
         });
     }
 
-    let b = await putUser(username, password, newUsername, newPassword)
-        .then(r => {
-            if (b) res.status(200).send({message: "Usuário atualizado com sucesso."});
-            else res.status(403).send({message: "Falha na atualização de usuário."})
-        })
+    let c = await putUser(username, password, newUsername, newPassword)
         .catch(err => {
             return res.status(500).json("Erro detectado: " + err.name + "- Detalhes: " + err.message);
-        })
-    ;
-
-
+        });
+    if (c) res.status(200).send({message: "Usuário atualizado com sucesso."});
+    else res.status(403).send({message: "Falha na atualização de usuário."});
 });
 
 export default router;
