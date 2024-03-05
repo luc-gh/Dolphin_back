@@ -19,6 +19,12 @@ export async function findUser(username: string, password: string) {
     }
 }
 
+export async function findUserByName(username: string){
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+    return users.findOne({username: username});
+}
+
 export async function addUser(username: string, password: string) {
     try {
         // @ts-ignore

@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import {addUser, deleteUser, findUser, putUser} from "../services/loginService.js";
+import {addUser, deleteUser, findUser, findUserByName, putUser} from "../services/loginService.js";
 
 dotenv.config({path: ".env"});
 
@@ -24,8 +24,12 @@ router.post('/login', (req, res) => {
         res.status(400).send({
             message: "Não foram recebidos os dados necessários."
         });
-        console.log("Não foram recebidos os dados necessários.")
         return res.json("Erro: não foram recebidos os dados.");
+    } else if (typeof username !== "string" || typeof password !== "string") {
+        res.status(422).send({
+            message: "Tipo de dado inválido."
+        });
+        return res.json("Erro: falha na leitura dos dados.");
     }
 
     findUser(username, password)
@@ -40,7 +44,7 @@ router.post('/login', (req, res) => {
 
 });
 
-router.post('/signin', (req, res) => {
+router.post('/signin', async (req, res) => {
     console.log("POST signin request trial started.");
 
     const {username, password} = req.body;
@@ -51,7 +55,18 @@ router.post('/signin', (req, res) => {
         });
         console.log("Não foram recebidos os dados necessários.")
         return res.json("Erro: não foram recebidos os dados.");
+    } else if (typeof username !== "string" || typeof password !== "string") {
+        res.status(422).send({
+            message: "Tipo de dado inválido."
+        });
+        return res.json("Erro: falha na leitura dos dados.");
+    } else if (await findUserByName(username).then()) {
+        res.status(409).send({
+            message: "Este usuário já existe"
+        });
+        return res.json("Erro: usuário já cadastrado.");
     }
+
     console.log("Username recebido: " + username);
     console.log("Senha recebida: " + password);
 
@@ -72,6 +87,11 @@ router.delete('/account', async (req, res) => {
         });
         console.log("Não foram recebidos os dados necessários.")
         return res.json("Erro: não foram recebidos os dados.");
+    } else if (typeof username !== "string" || typeof password !== "string") {
+        res.status(422).send({
+            message: "Tipo de dado inválido."
+        });
+        return res.json("Erro: falha na leitura dos dados.");
     }
 
     let c = await deleteUser(username, password).then();
@@ -90,6 +110,11 @@ router.put('/account', async (req, res) => {
         return res.status(400).send({
             message: "Não foram recebidos os dados necessários."
         });
+    } else if (typeof username !== "string" || typeof password !== "string" || typeof newUsername !== "string" || typeof newPassword !== "string") {
+        res.status(422).send({
+            message: "Tipo de dado inválido."
+        });
+        return res.json("Erro: falha na leitura dos dados.");
     }
 
     let c = await putUser(username, password, newUsername, newPassword)
