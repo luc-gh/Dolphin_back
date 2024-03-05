@@ -43,6 +43,9 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 37. Alterações no serviço e nas rotas de login
 38. Mudança na lógica de alteração de dados (PUT) na rota de signin
 39. Alteração lógica na exclusão (DELETE HTTP request) de usuário
+40. Documenta;áo de testes no Insomnia no arquivo [Insomnia_tests.md](src/Insomnia_tests.md)
+41. Alteração no serviço de notas no arquivo [noteService.ts](src/services/noteService.ts)
+42. Criação das rotas de notas no arquivo [noteRoute.ts](src/routes/noteRoute.ts)
 
 ### Listagem de fontes ou referências de aprendizado
 

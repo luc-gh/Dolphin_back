@@ -5,9 +5,7 @@ import {addUser, deleteUser, findUser, findUserByName, putUser} from "../service
 dotenv.config({path: ".env"});
 
 const app = express();
-
 app.use(express.json());
-
 let router = express.Router();
 
 router.get('/login', (req, res) => {
@@ -42,6 +40,11 @@ router.post('/login', (req, res) => {
         })
     ;
 
+});
+
+router.get('/signin', (req, res) => {
+    console.log("GET signin request trial started.");
+    return res.status(200).send({message: "Requisição GET signin OK"});
 });
 
 router.post('/signin', async (req, res) => {
