@@ -9,27 +9,27 @@ app.use(express.json);
 let router = express.Router();
 
 //Dashboard
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard/:id", (req, res) => {
     return res.status(200).send({message: "GET /dashboard OK"});
 });
 
 //Add nota
-router.post("/dashboard/new", (req, res) => {
+router.post("/dashboard/:id/new", (req, res) => {
 
 });
 
 //Abrir nota
-router.get("/notes/:id", (req, res) => {
+router.get("/notes/:id/:noteId", (req, res) => {
 
 });
 
 //Editar titulo
-router.put("/notes/:id/title", (req, res) => {
+router.put("/notes/:id/:noteId/title", (req, res) => {
 
 });
 
 //Editar conteúdo
-router.put("/notes/:id/content", (req, res) => {
+router.put("/notes/:id/:noteId/content", (req, res) => {
 
 });
 
@@ -39,7 +39,7 @@ router.get("/notes/:id/dashboard", (req, res) => {
 });
 
 //Apagar nota
-router.delete("/dashboard/delete/:id", (req, res) => {
+router.delete("/dashboard/:id/delete/:noteId", (req, res) => {
 
 });
 

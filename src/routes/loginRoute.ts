@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import {addUser, deleteUser, findUser, findUserByName, putUser} from "../services/loginService.js";
+import {addUser, deleteUser, findId, findUser, findUserByName, putUser} from "../services/loginService.js";
 
 dotenv.config({path: ".env"});
 
@@ -32,7 +32,8 @@ router.post('/login', (req, res) => {
 
     findUser(username, password)
         .then(r => {
-            if (r) return res.status(200).json("Usuário encontrado.");
+            let id = findId(username, password).then();
+            if (r) return res.status(200).json("Usuário encontrado.").redirect("/dashboard/" + id);  //Redireciona para dashboard de usuário
             else return res.status(404).json("Não foi encontrado usuário.");
         })
         .catch(err => {
