@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import {addUser, deleteUser, findId, findUser, findUserByName, putUser} from "../services/loginService.js";
+import {addUser, deleteUser, findUser, findUserByName, putUser} from "../services/loginService.js";
 
 dotenv.config({path: ".env"});
 
@@ -13,7 +13,7 @@ router.get('/login', (req, res) => {
     return res.status(200).send({message: "Requisição GET login OK"});
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     console.log("POST login request trial started.");
 
     const {username, password} = req.body;
@@ -30,25 +30,21 @@ router.post('/login', (req, res) => {
         return res.json("Erro: falha na leitura dos dados.");
     }
 
+    console.log(username + " - " + password);
     findUser(username, password)
-        .then(r => {
-            let id = findId(username, password).then();
-            if (r) return res.status(200).json("Usuário encontrado.").redirect("/dashboard/" + id);  //Redireciona para dashboard de usuário
-            else return res.status(404).json("Não foi encontrado usuário.");
-        })
         .catch(err => {
-            return res.status(500).json("Erro detectado: " + err.name)
-        })
-    ;
-
+            return res.status(500).send("Erro detectado: " + err.name)
+        });
+    console.log(`Redirecionamento para dashboard/${username}`);
+    return res.status(200).redirect(`/dashboard/${username}`);  //Redireciona para dashboard de usuário
 });
 
-router.get('/signin', (req, res) => {
+router.get('/signup', (req, res) => {
     console.log("GET signin request trial started.");
     return res.status(200).send({message: "Requisição GET signin OK"});
 });
 
-router.post('/signin', async (req, res) => {
+router.post('/signup', async (req, res) => {
     console.log("POST signin request trial started.");
 
     const {username, password} = req.body;
@@ -75,7 +71,7 @@ router.post('/signin', async (req, res) => {
     console.log("Senha recebida: " + password);
 
     addUser(username, password)
-        .then(() => res.status(200).json("Usuário adicionado."))
+        .then(() => res.status(200).json("Usuário adicionado.").redirect('/login'))
         .catch(err => {return res.status(500).json("Erro: " + err.name);})
     ;
 });

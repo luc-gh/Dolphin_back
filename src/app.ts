@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import loginRoutes from "./routes/loginRoute.js";
+import noteRoutes from "./routes/noteRoute.js";
 import { collectionsCreator } from "./config/databaseConnection.js";
 
 dotenv.config({path: ".env"});
@@ -25,7 +26,7 @@ cc.then(()=>{
 });
 
 //Rotas
-app.use('/', loginRoutes);
+app.use('/', [loginRoutes, noteRoutes]);
 
 //Exceções:
 process.on('uncaughtException', function (err) {

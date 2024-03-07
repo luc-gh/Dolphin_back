@@ -46,6 +46,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 40. Documenta;áo de testes no Insomnia no arquivo [Insomnia_tests.md](src/Insomnia_tests.md)
 41. Alteração no serviço de notas no arquivo [noteService.ts](src/services/noteService.ts)
 42. Criação das rotas de notas no arquivo [noteRoute.ts](src/routes/noteRoute.ts)
+43. Realização de testes com as rotas de notas
 
 ### Listagem de fontes ou referências de aprendizado
 

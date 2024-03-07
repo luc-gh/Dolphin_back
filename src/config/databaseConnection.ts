@@ -51,8 +51,9 @@ async function getClientData(): Promise<[MongoClient, Db] | [null, null]> {
         console.log("> Erro detectado em getClientData(): " + err);
     }
     finally {
-        console.log("> Client close from getClientData(): " + await client.close());
+        console.log("> getClientData() Finally");
     }
+    await client.close();
 
     return [null, null];
 }
@@ -61,7 +62,7 @@ getClientData().catch(console.dir);
 
 export async function getDBData(){
     console.log("> Chamada a getDBData()");
-    const [client, db]: [MongoClient, Db] | [null, null] = await getClientData();  // Chamando banco de dados
+    const [client, db]: [MongoClient, Db] = await getClientData().then();  // Chamando banco de dados
 
     if (!client || !db) {
         console.error("> Falha na conexão com o banco de dados.");

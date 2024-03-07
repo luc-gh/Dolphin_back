@@ -5,9 +5,9 @@ export async function findUser(username: string, password: string) {
     try {
         // @ts-ignore
         const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
-        const value = await users.findOne({ login: username, password: password });
-        if (value) {
-            console.log("> Usuário encontrado: ", value.toArray());
+        let value = await users.findOne({ username: username, password: password });
+        if (value !== null) {
+            console.log("> Usuário encontrado: ", value);
             return true;
         } else {
             console.log("> Não foi encontrado um usuário com estes dados");
@@ -23,12 +23,6 @@ export async function findUserByName(username: string):Promise<JSON | null>{
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
     return users.findOne({username: username});
-}
-
-export async function findId(username: string, password: string): Promise<string>{
-    // @ts-ignore
-    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
-    return users.findOne({username: username, password: password})._id;
 }
 
 export async function addUser(username: string, password: string) {

@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import * as noteService from "../services/noteService.js";
+import {createNote, findNoteById} from "../services/noteService.js";
 
 dotenv.config({path: ".env"});
 
@@ -9,42 +10,52 @@ app.use(express.json);
 let router = express.Router();
 
 //Dashboard
-router.get("/dashboard/:id", (req, res) => {
+router.get("/dashboard/:user", (req, res) => {
     return res.status(200).send({message: "GET /dashboard OK"});
 });
 
 //Add nota
-router.post("/dashboard/:id/new", (req, res) => {
-
+router.post("/dashboard/:user/new", async (req, res) => {
+    try {
+        const id: string = await createNote(); // Cria uma nova nota e obtém seu ID
+        if (await findNoteById(id)) {
+            res.status(200).redirect(`/notes/${id}`); // Redireciona para a página da nova nota
+        } else {
+            res.status(500).send({ message: "Erro na criação da nota." });
+        }
+    } catch (error) {
+        console.error("Erro:", error);
+        res.status(500).send({ message: "Erro na criação da nota." });
+    }
 });
 
 //Abrir nota
-router.get("/notes/:id/:noteId", (req, res) => {
+router.get("/notes/:user/:noteId", (req, res) => {
 
 });
 
 //Editar titulo
-router.put("/notes/:id/:noteId/title", (req, res) => {
+router.put("/notes/:user/:noteId/title", (req, res) => {
 
 });
 
 //Editar conteúdo
-router.put("/notes/:id/:noteId/content", (req, res) => {
+router.put("/notes/:user/:noteId/content", (req, res) => {
 
 });
 
 //Voltar
-router.get("/notes/:id/dashboard", (req, res) => {
+router.get("/notes/:user/dashboard", (req, res) => {
 
 });
 
 //Apagar nota
-router.delete("/dashboard/:id/delete/:noteId", (req, res) => {
+router.delete("/dashboard/:user/delete/:noteId", (req, res) => {
 
 });
 
 //Salvar nota
-router.put("/notes/:id/save", (req, res) => {
+router.put("/notes/:user/:id/save", (req, res) => {
 
 });
 
