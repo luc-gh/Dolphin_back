@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import * as noteService from "../services/noteService.js";
-import {createNote, findNoteById} from "../services/noteService.js";
+import {changeTitle, createNote, findNoteById} from "../services/noteService.js";
 
 dotenv.config({path: ".env"});
 
@@ -30,13 +30,17 @@ router.post("/dashboard/:user/new", async (req, res) => {
 });
 
 //Abrir nota
-router.get("/notes/:user/:noteId", (req, res) => {
-
+router.get("/notes/:user/:noteId", async (req, res) => {
+    const noteId = req.params.noteId;
+    if (await findNoteById(noteId)) return res.status(200).send({message: "Nota aberta."});
+    else return res.status(500).send({message: "Erro ao acessar nota."});
 });
 
 //Editar titulo
-router.put("/notes/:user/:noteId/title", (req, res) => {
-
+router.put("/notes/:user/:noteId/:title", async (req, res) => {
+    let [note, title] = [req.params.noteId, req.params.title];
+    if (await changeTitle(note, title).then()) res.status(200).send({message: "Título alterado."});
+    else res.status(500).send({message: "Erro ao alterar título."});
 });
 
 //Editar conteúdo

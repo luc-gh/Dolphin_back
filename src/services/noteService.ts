@@ -21,7 +21,7 @@ export async function createNote(){
     return result.insertedId;
 }
 
-export async function findNoteById(id: string){
+export async function findNoteById(id: string): Promise<Document> {
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
@@ -30,4 +30,15 @@ export async function findNoteById(id: string){
     }
 
     return await notes.findOne({_id: id}); // Retorna a nota encontrada ou null se não for encontrada
+}
+
+export async function changeTitle(noteId: string, newTitle: string){
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+
+    notes.updateOne(noteId, {title: newTitle});
+
+    console.log("Atualização: " + notes.findOne({_id: noteId}).toArray());
+
+    return notes.findOne({_id: noteId}).title == newTitle;
 }
