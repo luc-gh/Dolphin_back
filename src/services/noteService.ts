@@ -17,7 +17,7 @@ export async function createNote(){
         throw new Error('Collection "notes" não encontrada');
     }
 
-    const result = await notes.insertOne({ title: patternName, content: "", data: Date.now() });
+    const result = await notes.insertOne({ title: patternName, content: "", date: Date.now().toString() });
     return result.insertedId;
 }
 
@@ -42,3 +42,23 @@ export async function changeTitle(noteId: string, newTitle: string){
 
     return notes.findOne({_id: noteId}).title == newTitle;
 }
+
+export async function getIdByInfo(title: string, date: string): Promise<string> {
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+
+    let note = notes.findOne({title: title, date: date});
+    return note._id;
+}
+
+export async function changeContent(noteId: string, newContent: string){
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+
+    notes.updateOne(noteId, {content: newContent});
+
+    console.log("Atualização: " + notes.findOne({_id: noteId}).toArray());
+
+    return notes.findOne({_id: noteId}).content == newContent;
+}
+
