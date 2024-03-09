@@ -1,11 +1,8 @@
-import express from "express";
 import dotenv from "dotenv";
 import {Collection, Db, MongoClient} from "mongodb";
 import {getDBData} from "../config/databaseConnection.js";
 
 dotenv.config({path: ".env"});
-
-const app = express();
 
 export async function createNote(){
     const patternName: string = "Novo título";
@@ -60,5 +57,9 @@ export async function changeContent(noteId: string, newContent: string){
     console.log("Atualização: " + notes.findOne({_id: noteId}).toArray());
 
     return notes.findOne({_id: noteId}).content == newContent;
+}
+
+export async function deleteNote(){
+
 }
 

@@ -1,6 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
-import {addUser, deleteUser, findUser, findUserByUsername, putUser} from "../services/loginService.js";
+import {
+    addUser,
+    deleteUser,
+    findUser,
+    findUserByUsername,
+    findUserId,
+    putName, putPassword,
+    putUsername
+} from "../services/loginService.js";
 
 dotenv.config({path: ".env"});
 
@@ -35,8 +43,14 @@ router.post('/login', async (req, res) => {
         .catch(err => {
             return res.status(500).send("Erro detectado: " + err.name)
         });
-    console.log(`Redirecionamento para dashboard/${username}`);
-    return res.status(200).redirect(`/dashboard/${username}`);  //Redireciona para dashboard de usuário
+
+    let user = await findUserByUsername(username).then();
+    const name = user.name;
+
+    if (!name) return res.status(404).send({message: "Erro ao acessar nome."});
+
+    console.log(`Redirecionamento para dashboard/${name}`);
+    return res.status(200).redirect(`/dashboard/${name}`);  //Redireciona para dashboard de usuário
 });
 
 router.get('/signup', (req, res) => {
@@ -101,28 +115,67 @@ router.delete('/account', async (req, res) => {
 
 });
 
-router.put('/account', async (req, res) => {
-    console.log("PUT User request trial started.");
+router.put('/account/name', async (req, res) => {
+    console.log("PUT User Name request trial started.");
 
-    const {username, password, newUsername, newPassword} = req.body;
+    const {name, username, password, newName} = req.body;
 
-    if (!username || !password || !newUsername || !newPassword) {
+    if (!name || !username || !password || !newName) {
         return res.status(400).send({
             message: "Não foram recebidos os dados necessários."
         });
-    } else if (typeof username !== "string" || typeof password !== "string" || typeof newUsername !== "string" || typeof newPassword !== "string") {
+    } else if (typeof name !== "string" || typeof username !== "string" || typeof password !== "string" || typeof newName !== "string") {
         res.status(422).send({
             message: "Tipo de dado inválido."
         });
         return res.json("Erro: falha na leitura dos dados.");
     }
 
-    let c = await putUser(username, password, newUsername, newPassword)
-        .catch(err => {
-            return res.status(500).json("Erro detectado: " + err.name + "- Detalhes: " + err.message);
+    let c = await putName(await findUserId(name, username, password).then(), newName).then();
+    if (c) res.status(200).send({message: "Nome de usuário atualizado com sucesso."});
+    else res.status(403).send({message: "Falha na atualização do nome de usuário."});
+});
+
+router.put('/account/username', async (req, res) => {
+    console.log("PUT User username request trial started.");
+
+    const {name, username, password, newUsername} = req.body;
+
+    if (!name || !username || !password || !newUsername) {
+        return res.status(400).send({
+            message: "Não foram recebidos os dados necessários."
         });
-    if (c) res.status(200).send({message: "Usuário atualizado com sucesso."});
-    else res.status(403).send({message: "Falha na atualização de usuário."});
+    } else if (typeof name !== "string" || typeof username !== "string" || typeof password !== "string" || typeof newUsername !== "string") {
+        res.status(422).send({
+            message: "Tipo de dado inválido."
+        });;
+        return res.json("Erro: falha na leitura dos dados.");
+    }
+
+    let c = await putUsername(await findUserId(name, username, password).then(), newUsername).then();
+    if (c) res.status(200).send({message: "Username atualizado com sucesso."});
+    else res.status(403).send({message: "Falha na atualização de Username."});
+});
+
+router.put('/account/password', async (req, res) => {
+    console.log("PUT User username request trial started.");
+
+    const {name, username, password, newPassword} = req.body;
+
+    if (!name || !username || !password || !newPassword) {
+        return res.status(400).send({
+            message: "Não foram recebidos os dados necessários."
+        });
+    } else if (typeof name !== "string" || typeof username !== "string" || typeof password !== "string" || typeof newPassword !== "string") {
+        res.status(422).send({
+            message: "Tipo de dado inválido."
+        });;
+        return res.json("Erro: falha na leitura dos dados.");
+    }
+
+    let c = await putPassword(await findUserId(name, username, password).then(), newPassword).then();
+    if (c) res.status(200).send({message: "Senha de usuário atualizada com sucesso."});
+    else res.status(403).send({message: "Falha na atualização da senha de usuário."});
 });
 
 export default router;

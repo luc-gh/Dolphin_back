@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import * as noteService from "../services/noteService.js";
 import {changeContent, changeTitle, createNote, findNoteById, getIdByInfo} from "../services/noteService.js";
+import {findUserId} from "../services/loginService.js";
 
 dotenv.config({path: ".env"});
 
@@ -64,7 +65,12 @@ router.get("/notes/:user/dashboard", (req, res) => {
 });
 
 //Apagar nota
-router.delete("/dashboard/:user/delete/:noteId", (req, res) => {
+router.delete("/dashboard/:user/delete/:noteId", async (req, res) => {
+    const [name, noteId] = [req.params.user, req.params.noteId];
+    const [username, password] = req.body;
+
+    let id = await findUserId(name, username, password).then();
+
 
 });
 

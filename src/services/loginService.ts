@@ -19,17 +19,21 @@ export async function findUser(username: string, password: string) {
     }
 }
 
-export async function findUserByUsername(username: string):Promise<JSON | null>{
+export async function findUserByUsername(username: string){
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
     return users.findOne({username: username});
 }
 
-async function findUserId(name:){
+export async function findUserId(name: string, username: string, password: string){
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
+    let id: string = await users.findOne({name: name, username: username, password: password})._id;
+    return id;
 }
 
-export async function addUser(name: string, username: string, password: string): Promise<string> {
+export async function addUser(name: string, username: string, password: string) {
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
@@ -61,45 +65,58 @@ export async function deleteUser(username: string, password: string){
     return deletedDocument === null;
 }
 
-export async function putName(userId: string, newName: string){
+export async function putName(userId: string, newName: string): Promise<boolean> {
     //@ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-    let name = find
-
-    if (username !== null && newUsername !== null) {
+    if (userId !== null && newName !== null) {
         await users.updateOne(
-            { username: String(username) },
-            { $set: {username: newUsername} },
+            { _id: userId },
+            { $set: {name: newName} },
             { returnOriginal: false }
         );
-        username = newUsername;
     }
+
+    let user = users.findOne({_id: userId});
+    return user.name == newName;
 }
 
-export async function putUser(username: string, password: string, newUsername: string, newPassword: string){
+export async function putUsername(userId: string, newUsername: string): Promise<boolean> {
     //@ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-    if (username !== null && newUsername !== null) {
+    if (userId !== null && newUsername !== null) {
         await users.updateOne(
-            { username: String(username) },
+            { _id: userId },
             { $set: {username: newUsername} },
             { returnOriginal: false }
         );
-        username = newUsername;
     }
 
-    if (password !== null && newPassword !== null) {
+    let user = users.findOne({_id: userId});
+    return user.username == newUsername;
+}
+
+export async function putPassword(userId: string, newPassword: string): Promise<boolean> {
+    //@ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+
+    if (userId !== null && newPassword!== null) {
         await users.updateOne(
-            { password: String(password) },
+            { _id: userId },
             { $set: {password: newPassword} },
             { returnOriginal: false }
         );
-        password = newPassword;
     }
 
-    return await users.findOne({username: newUsername, password: newPassword}).then();
+    let user = users.findOne({_id: userId});
+    return user.password == newPassword;
+}
+
+export async function putUser(userId: string, name: string, newName: string, username: string, password: string, newUsername: string, newPassword: string){
+    //@ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+    return (await putName(userId, newName).then() && await putUsername(userId, newUsername).then() && await putPassword(userId, newPassword).then());
 }
 
 
