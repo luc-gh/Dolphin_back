@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import {addUser, deleteUser, findUser, findUserByName, putUser} from "../services/loginService.js";
+import {addUser, deleteUser, findUser, findUserByUsername, putUser} from "../services/loginService.js";
 
 dotenv.config({path: ".env"});
 
@@ -47,20 +47,20 @@ router.get('/signup', (req, res) => {
 router.post('/signup', async (req, res) => {
     console.log("POST signin request trial started.");
 
-    const {username, password} = req.body;
+    const {name, username, password} = req.body;
 
-    if (!username || !password) {
+    if (!name || !username || !password) {
         res.status(400).send({
             message: "Não foram recebidos os dados necessários."
         });
         console.log("Não foram recebidos os dados necessários.")
         return res.json("Erro: não foram recebidos os dados.");
-    } else if (typeof username !== "string" || typeof password !== "string") {
+    } else if (typeof name !== "string" || typeof username !== "string" || typeof password !== "string") {
         res.status(422).send({
             message: "Tipo de dado inválido."
         });
         return res.json("Erro: falha na leitura dos dados.");
-    } else if (await findUserByName(username).then()) {
+    } else if (await findUserByUsername(username).then()) {
         res.status(409).send({
             message: "Este usuário já existe"
         });
@@ -70,9 +70,9 @@ router.post('/signup', async (req, res) => {
     console.log("Username recebido: " + username);
     console.log("Senha recebida: " + password);
 
-    addUser(username, password)
+    await addUser(name, username, password)
         .then(() => res.status(200).json("Usuário adicionado.").redirect('/login'))
-        .catch(err => {return res.status(500).json("Erro: " + err.name);})
+        .catch(err => {return res.status(500).json("Erro: " + err.name);}).then()
     ;
 });
 

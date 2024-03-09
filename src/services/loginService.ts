@@ -19,37 +19,35 @@ export async function findUser(username: string, password: string) {
     }
 }
 
-export async function findUserByName(username: string):Promise<JSON | null>{
+export async function findUserByUsername(username: string):Promise<JSON | null>{
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
     return users.findOne({username: username});
 }
 
-export async function addUser(username: string, password: string) {
-    try {
-        // @ts-ignore
-        const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+async function findUserId(name:){
 
-        // Recupera todos os documentos da coleção e os coloca em um array
-        let docs = await users.find({}).toArray();
+}
 
-        console.log('> Documentos atuais da coleção' + users.name + ': ');
-        console.log(docs);
+export async function addUser(name: string, username: string, password: string): Promise<string> {
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-        // Insere o novo documento na coleção
-        const result = await users.insertOne({username: username, password: password});
-        console.log('> Novo dado inserido na coleção' + users.name + ': ' + result.insertedId);
+    // Recupera todos os documentos da coleção e os coloca em um array
+    let docs = await users.find({}).toArray();
 
-        //Verificação de atualização:
-        docs = await users.find({}).toArray();
+    console.log('> Documentos atuais da coleção' + users.name + ': ');
+    console.log(docs);
 
-        console.log('> Novos documentos da coleção' + users.name + ': ');
-        console.log(docs);
-    } catch (error) {
-        console.error('> Ocorreu um erro:', error);
-    } finally {
-        console.log("> Inserção completa, se feita corretamente.")
-    }
+    // Insere o novo documento na coleção
+    const result = await users.insertOne({name: name, username: username, password: password});
+    console.log('> Novo dado inserido na coleção' + users.name + ': ' + result.insertedId);
+
+    //Verificação de atualização:
+    docs = await users.find({}).toArray();
+
+    console.log('> Novos documentos da coleção' + users.name + ': ');
+    console.log(docs);
 }
 
 export async function deleteUser(username: string, password: string){
@@ -61,6 +59,22 @@ export async function deleteUser(username: string, password: string){
     //Verificação de atualização:
     const deletedDocument = await users.findOne({username: username, password: password});
     return deletedDocument === null;
+}
+
+export async function putName(userId: string, newName: string){
+    //@ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+
+    let name = find
+
+    if (username !== null && newUsername !== null) {
+        await users.updateOne(
+            { username: String(username) },
+            { $set: {username: newUsername} },
+            { returnOriginal: false }
+        );
+        username = newUsername;
+    }
 }
 
 export async function putUser(username: string, password: string, newUsername: string, newPassword: string){
