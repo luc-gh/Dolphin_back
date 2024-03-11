@@ -1,7 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import * as noteService from "../services/noteService.js";
-import {changeContent, changeTitle, createNote, findNoteById, getIdByInfo} from "../services/noteService.js";
+import {
+    changeContent,
+    changeTitle,
+    createNote,
+    deleteNote,
+    findNoteById,
+    getIdByInfo
+} from "../services/noteService.js";
 import {findUserId} from "../services/loginService.js";
 
 dotenv.config({path: ".env"});
@@ -71,11 +78,16 @@ router.delete("/dashboard/:user/delete/:noteId", async (req, res) => {
 
     let id = await findUserId(name, username, password).then();
 
+    let c = await deleteNote(id).then();
 
+    if (c) return res.status(200).send({message: "Nota deletada."});
+    else return res.status(500).send({message: "Erro ao deletar nota."});
 });
 
 //Salvar nota
-router.put("/notes/:user/:id/save", (req, res) => {
+router.put("/notes/:user/:noteId/save", (req, res) => {
+    let [user, noteId, content]: [string, string, string] = [req.params.user, req.params.noteId, req.body];
+
 
 });
 

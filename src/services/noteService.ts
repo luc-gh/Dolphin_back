@@ -59,7 +59,15 @@ export async function changeContent(noteId: string, newContent: string){
     return notes.findOne({_id: noteId}).content == newContent;
 }
 
-export async function deleteNote(){
+export async function deleteNote(noteId: string): Promise<boolean> {
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
+    await notes.deleteOne({_id: noteId});
+
+    return notes.findOne({_id: noteId});
 }
 
+export async function save(){
+
+}
