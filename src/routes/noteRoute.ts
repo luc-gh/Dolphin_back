@@ -7,7 +7,7 @@ import {
     createNote,
     deleteNote,
     findNoteById,
-    getIdByInfo
+    getIdByInfo, save
 } from "../services/noteService.js";
 import {findUserId} from "../services/loginService.js";
 
@@ -85,10 +85,11 @@ router.delete("/dashboard/:user/delete/:noteId", async (req, res) => {
 });
 
 //Salvar nota
-router.put("/notes/:user/:noteId/save", (req, res) => {
-    let [user, noteId, content]: [string, string, string] = [req.params.user, req.params.noteId, req.body];
+router.put("/notes/:user/:noteId/save", async (req, res) => {
+    let [noteId, content]: [string, string] = [req.params.noteId, req.body];
 
-
+    await save(noteId, content);
+    return res.status(200).send("Modified");
 });
 
 export default router;

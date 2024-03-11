@@ -4,6 +4,16 @@ import {getDBData} from "../config/databaseConnection.js";
 
 dotenv.config({path: ".env"});
 
+function dataAtualFormatada() {
+    let data = new Date(),
+        dia  = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0' + dia : dia,
+        mes  = (data.getMonth() + 1).toString(),
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
+    return ({dia: diaF, mes: mesF, ano: anoF});
+}
+
 export async function createNote(){
     const patternName: string = "Novo título";
 
@@ -14,7 +24,7 @@ export async function createNote(){
         throw new Error('Collection "notes" não encontrada');
     }
 
-    const result = await notes.insertOne({ title: patternName, content: "", date: Date.now().toString() });
+    const result = await notes.insertOne({ title: patternName, content: "", date: dataAtualFormatada() });
     return result.insertedId;
 }
 
@@ -68,6 +78,15 @@ export async function deleteNote(noteId: string): Promise<boolean> {
     return notes.findOne({_id: noteId});
 }
 
-export async function save(){
+export async function save(noteId: string, content: string){
+    // @ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
+    await users.updateOne(
+        { _id: noteId },
+        { $set: {content: content} },
+        { returnOriginal: false }
+    );
+
+    return;
 }
