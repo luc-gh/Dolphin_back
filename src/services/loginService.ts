@@ -22,7 +22,9 @@ export async function findUser(username: string, password: string) {
 export async function findUserByUsername(username: string){
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
-    return users.findOne({username: username});
+    let c = users.findOne({username: username});
+    console.log(c);
+    return c;
 }
 
 export async function findUserId(name: string, username: string, password: string){

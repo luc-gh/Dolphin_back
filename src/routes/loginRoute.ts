@@ -45,6 +45,7 @@ router.post('/login', async (req, res) => {
         });
 
     let user = await findUserByUsername(username).then();
+    console.log("Condição (usuário): " + user);
     const name = user.name;
 
     if (!name) return res.status(404).send({message: "Erro ao acessar nome."});
