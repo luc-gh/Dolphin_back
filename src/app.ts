@@ -31,6 +31,6 @@ process.on('uncaughtException', function (err) {
     console.log(err);
 })
 
-app.listen(3000, ()=>{console.log("Running at port 3000")});
+app.listen(27017, ()=>{console.log("Running at port 27017")});
 
 export default app;
