@@ -7,7 +7,7 @@ import {
     createNote,
     deleteNote,
     findNoteById,
-    getIdByInfo, save
+    getIdByInfo, getNotes, save
 } from "../services/noteService.js";
 import {findUserId} from "../services/loginService.js";
 
@@ -24,8 +24,9 @@ router.get("/dashboard/:user", (req, res) => {
 
 //Add nota
 router.post("/dashboard/:user/new", async (req, res) => {
+    const user = req.params.user;
     try {
-        const id: string = await createNote(); // Cria uma nova nota e obtém seu ID
+        const id: string = await createNote(user); // Cria uma nova nota e obtém seu ID
         if (await findNoteById(id)) {
             res.status(201).redirect(`/notes/${id}`); // Redireciona para a página da nova nota
         } else {
@@ -90,6 +91,12 @@ router.put("/notes/:user/:noteId/save", async (req, res) => {
 
     await save(noteId, content);
     return res.status(200).send("Modified");
+});
+
+router.get("/notes/:user", async (req, res) => {
+    const user = req.params.user;
+    let notes = await getNotes(user).then();
+    return res.status(200).json(notes);
 });
 
 export default router;

@@ -14,7 +14,7 @@ function dataAtualFormatada() {
     return ({dia: diaF, mes: mesF, ano: anoF});
 }
 
-export async function createNote(){
+export async function createNote(user: string){
     const patternName: string = "Novo título";
 
     // @ts-ignore
@@ -24,7 +24,7 @@ export async function createNote(){
         throw new Error('Collection "notes" não encontrada');
     }
 
-    const result = await notes.insertOne({ title: patternName, content: "", date: dataAtualFormatada() });
+    const result = await notes.insertOne({ title: patternName, content: "", date: dataAtualFormatada(), author: user });
     return result.insertedId;
 }
 
@@ -89,4 +89,11 @@ export async function save(noteId: string, content: string){
     );
 
     return;
+}
+
+export async function getNotes(user: string){
+    //@ts-ignore
+    const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
+    const query = {author: user};
+    return await notes.find(query).toArray();
 }
