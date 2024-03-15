@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
     if (!name) return res.status(404).send({message: "Erro ao acessar nome."});
 
     console.log(`Redirecionamento para dashboard/${name}`);
-    return res.status(200).redirect(`/dashboard/${name}`);  //Redireciona para dashboard de usuário
+    return res.status(200).send({user: username});  //Redireciona para dashboard de usuário
 });
 
 router.get('/signup', (req, res) => {
