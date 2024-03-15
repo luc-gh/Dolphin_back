@@ -15,9 +15,7 @@ const app = express();
 app.use(express.json());
 
 //Cors
-app.use(cors({
-    origin: ['http://localhost:3000']
-}));
+app.use(cors());
 
 //Database
 const cc = collectionsCreator();
