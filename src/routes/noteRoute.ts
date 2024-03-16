@@ -29,7 +29,7 @@ router.post("/dashboard/:user/new", async (req, res) => {
     try {
         const id: string = await createNote(user); // Cria uma nova nota e obtém seu ID
         if (await findNoteById(id)) {
-            res.status(201).redirect(`/notes/${id}`); // Redireciona para a página da nova nota
+            res.status(201).send(id); // Redireciona para a página da nova nota
         } else {
             res.status(500).send({ message: "Erro na criação da nota." });
         }

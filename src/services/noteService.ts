@@ -11,7 +11,7 @@ function dataAtualFormatada() {
         mes  = (data.getMonth() + 1).toString(),
         mesF = (mes.length == 1) ? '0'+mes : mes,
         anoF = data.getFullYear();
-    return ({dia: diaF, mes: mesF, ano: anoF});
+    return `${diaF}-${mesF}-${anoF}`;
 }
 
 export async function createNote(user: string){
