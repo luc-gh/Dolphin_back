@@ -15,7 +15,7 @@ function dataAtualFormatada() {
 }
 
 export async function createNote(user: string){
-    const patternName: string = "New title";
+    const patternName: string = "Document Title";
 
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
