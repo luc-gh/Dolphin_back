@@ -88,9 +88,10 @@ router.delete("/dashboard/:user/delete/:noteId", async (req, res) => {
 
 //Salvar nota
 router.put("/notes/:user/:noteId/save", async (req, res) => {
-    let [noteId, content]: [string, string] = [req.params.noteId, req.body];
+    let noteId = req.params.noteId;
+    let [title, content]: [string, string] = req.body;
 
-    await save(noteId, content);
+    await save(noteId, title, content);
     return res.status(200).send("Modified");
 });
 

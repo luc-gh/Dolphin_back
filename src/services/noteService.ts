@@ -15,7 +15,7 @@ function dataAtualFormatada() {
 }
 
 export async function createNote(user: string){
-    const patternName: string = "Novo título";
+    const patternName: string = "New title";
 
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
@@ -64,7 +64,7 @@ export async function changeContent(noteId: string, newContent: string){
 
     notes.updateOne(noteId, {content: newContent});
 
-    console.log("Atualização: " + notes.findOne({_id: noteId}).toArray());
+    console.log("Update: " + notes.findOne({_id: noteId}).toArray());
 
     return notes.findOne({_id: noteId}).content == newContent;
 }
@@ -78,13 +78,13 @@ export async function deleteNote(noteId: string): Promise<boolean> {
     return notes.findOne({_id: noteId});
 }
 
-export async function save(noteId: string, content: string){
+export async function save(noteId: string, title: string, content: string){
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
     await users.updateOne(
         { _id: noteId },
-        { $set: {content: content} },
+        { $set: {title: title, content: content} },
         { returnOriginal: false }
     );
 
