@@ -27,10 +27,11 @@ cc.then(()=>{
 app.use('/', [loginRoutes, noteRoutes]);
 
 //Exceções:
-process.on('uncaughtException', function (err) {
-    console.log(err);
+process.on('uncaughtException', function (error, origin) {
+    console.log(error);
+    console.log(origin);
 })
 
-app.listen(27017, ()=>{console.log("Running at port 27017")});
+app.listen(3000, ()=>{console.log("Running at port 3000")});
 
 export default app;

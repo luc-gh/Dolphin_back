@@ -25,6 +25,7 @@ router.get("/dashboard/:user", (req, res) => {
 //Add nota
 router.post("/dashboard/:user/new", async (req, res) => {
     const user = req.params.user;
+    console.log("addNota user (): " + user);
     try {
         const id: string = await createNote(user); // Cria uma nova nota e obtém seu ID
         if (await findNoteById(id)) {
