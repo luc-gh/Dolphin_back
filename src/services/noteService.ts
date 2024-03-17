@@ -15,14 +15,18 @@ function dataAtualFormatada() {
 }
 
 export async function createNote(user: string){
-    const patternName: string = "Document Title";
 
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
+    let index = await notes.countDocuments({});
+    console.log(index);
+
     if (!notes) {
         throw new Error('Collection "notes" não encontrada');
     }
+
+    const patternName: string = "Document Title" + index;
 
     const result = await notes.insertOne({ title: patternName, content: "", date: dataAtualFormatada(), author: user });
     return result.insertedId;
@@ -50,11 +54,16 @@ export async function changeTitle(noteId: string, newTitle: string){
     return notes.findOne({_id: noteId}).title == newTitle;
 }
 
-export async function getIdByInfo(title: string, date: string): Promise<string> {
+export async function getIdByInfo(author: string, date: string, title: string): Promise<string> {
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-    let note = notes.findOne({title: title, date: date});
+    console.log("Autor: " + author);
+    console.log("Data: " + date);
+    console.log("Title: " + title);
+
+    let note = await notes.findOne({author: author, date: date, title: title});
+    console.log(note._id);
     return note._id;
 }
 

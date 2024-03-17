@@ -40,9 +40,11 @@ router.post("/dashboard/:user/new", async (req, res) => {
 });
 
 //Selecionar nota (pegar ID)
-router.get("/dashboard/:user/:noteTitle/:date", async (req, res) => {
-    let [title, date] = [req.params.noteTitle, req.params.date];
-    let id = await getIdByInfo(title, date).then();
+router.get("/dashboard/:user/getNote", async (req, res) => {
+    let author= req.params.user;
+    let title = req.body.title;
+    let date = req.body.date;
+    let id = await getIdByInfo(author, date, title).then();
     if (await findNoteById(id).then()) return res.status(200).send(id);
     else return res.status(404).send({message: "ID não encontrada."});
 });
@@ -55,8 +57,8 @@ router.get("/notes/:user/:noteId", async (req, res) => {
 });
 
 //Editar titulo
-router.put("/notes/:user/:noteId/:title", async (req, res) => {
-    let [note, title] = [req.params.noteId, req.params.title];
+router.put("/notes/:user/:noteId/title", async (req, res) => {
+    let [note, title] = [req.params.noteId, req.body.title];
     if (await changeTitle(note, title).then()) res.status(200).send({message: "Título alterado."});
     else res.status(500).send({message: "Erro ao alterar título."});
 });
