@@ -86,14 +86,11 @@ router.get("/notes/:user/dashboard", (req, res) => {
 
 //Apagar nota
 router.delete("/dashboard/:user/delete/:noteId", async (req, res) => {
-    const [name, noteId] = [req.params.user, req.params.noteId];
-    const [username, password] = req.body;
+    const noteId = req.params.noteId;
 
-    let id = await findUserId(name, username, password).then();
+    let c = await deleteNote(noteId).then();
 
-    let c = await deleteNote(id).then();
-
-    if (c) return res.status(200).send({message: "Nota deletada."});
+    if (!c) return res.status(200).send({message: "Nota deletada."});
     else return res.status(500).send({message: "Erro ao deletar nota."});
 });
 
@@ -110,6 +107,7 @@ router.put("/notes/:user/save", async (req, res) => {
     return res.status(200).send("Modified");
 });
 
+//Pegar todas as notas
 router.get("/notes/:user", async (req, res) => {
     const user = req.params.user;
     let notes = await getNotes(user).then();

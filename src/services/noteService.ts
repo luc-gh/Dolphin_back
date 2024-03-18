@@ -82,9 +82,9 @@ export async function deleteNote(noteId: string): Promise<boolean> {
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-    await notes.deleteOne({_id: noteId});
+    await notes.deleteOne({_id: new ObjectId(noteId)});
 
-    return notes.findOne({_id: noteId});
+    return await notes.findOne({_id: new ObjectId(noteId)});
 }
 
 export async function save(noteId: string, title: string, content: string){
