@@ -51,8 +51,15 @@ router.get("/dashboard/:user/getNote", async (req, res) => {
 
 //Abrir nota
 router.get("/notes/:user/:noteId", async (req, res) => {
+    const user = req.params.user;
     const noteId = req.params.noteId;
-    if (await findNoteById(noteId)) return res.status(200).send({message: "Nota aberta."});
+
+    let note = await findNoteById(noteId).then();
+    console.log(note);
+
+    if (note) {
+        return res.status(200).json({title: note.title, content: note.content});
+    }
     else return res.status(500).send({message: "Erro ao acessar nota."});
 });
 

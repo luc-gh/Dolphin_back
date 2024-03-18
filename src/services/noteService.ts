@@ -40,7 +40,7 @@ export async function findNoteById(id: string): Promise<Document> {
         throw new Error('Collection "notes" não encontrada');
     }
 
-    return await notes.findOne({_id: id}); // Retorna a nota encontrada ou null se não for encontrada
+    return await notes.findOne({_id: new ObjectId(id)}); // Retorna a nota encontrada ou null se não for encontrada
 }
 
 export async function changeTitle(noteId: string, newTitle: string){
