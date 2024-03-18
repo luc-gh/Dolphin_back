@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import {Collection, Db, MongoClient} from "mongodb";
+import {Collection, Db, MongoClient, ObjectId} from "mongodb";
 import {getDBData} from "../config/databaseConnection.js";
 
 dotenv.config({path: ".env"});
@@ -91,12 +91,9 @@ export async function save(noteId: string, title: string, content: string){
     // @ts-ignore
     const [client, db, users, notes]: [MongoClient, Db, Collection, Collection] | undefined = await getDBData();
 
-    await users.updateOne(
-        { _id: noteId },
-        { $set: {title: title, content: content} },
-        { returnOriginal: false }
-    );
+    let c = await notes.updateOne({_id: new ObjectId(noteId)}, {$set: {title: title, content: content}, $currentDate: { lastModified: true }} ).then();
 
+    console.log(c);
     return;
 }
 

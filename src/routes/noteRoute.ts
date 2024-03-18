@@ -89,9 +89,13 @@ router.delete("/dashboard/:user/delete/:noteId", async (req, res) => {
 });
 
 //Salvar nota
-router.put("/notes/:user/:noteId/save", async (req, res) => {
-    let noteId = req.params.noteId;
-    let [title, content]: [string, string] = req.body;
+router.put("/notes/:user/save", async (req, res) => {
+    let [title, content, noteId]: [string, string, string] = [req.body.title, req.body.content, req.body.noteId];
+
+    console.log("Save trial");
+    console.log("ID:" + noteId);
+    console.log("title:" + title);
+    console.log("Content: " + content);
 
     await save(noteId, title, content);
     return res.status(200).send("Modified");
