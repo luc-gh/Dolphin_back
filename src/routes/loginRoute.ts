@@ -69,25 +69,22 @@ router.post('/signup', async (req, res) => {
             message: "Não foram recebidos os dados necessários."
         });
         console.log("Não foram recebidos os dados necessários.")
-        return res.json("Erro: não foram recebidos os dados.");
     } else if (typeof name !== "string" || typeof username !== "string" || typeof password !== "string") {
         res.status(422).send({
             message: "Tipo de dado inválido."
         });
-        return res.json("Erro: falha na leitura dos dados.");
     } else if (await findUserByUsername(username).then()) {
         res.status(409).send({
             message: "Este usuário já existe"
         });
-        return res.json("Erro: usuário já cadastrado.");
     }
 
     console.log("Username recebido: " + username);
     console.log("Senha recebida: " + password);
 
     await addUser(name, username, password)
-        .then(() => res.status(200).json("Usuário adicionado.").redirect('/login'))
-        .catch(err => {return res.status(500).json("Erro: " + err.name);}).then()
+        .then(() => res.status(200).send({message:"Usuário adicionado."}))
+        .catch(err => {return res.status(500).send({message: "Erro: " + err.name});}).then()
     ;
 });
 
