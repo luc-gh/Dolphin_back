@@ -24,25 +24,17 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     console.log("POST login request trial started.");
 
-    const {username, password} = req.body;
+    let [username, password]: [string, string] = [req.body.username, req.body.password];
 
     if (!username || !password) {
         res.status(400).send({
             message: "Não foram recebidos os dados necessários."
         });
         return res.json("Erro: não foram recebidos os dados.");
-    } else if (typeof username !== "string" || typeof password !== "string") {
-        res.status(422).send({
-            message: "Tipo de dado inválido."
-        });
-        return res.json("Erro: falha na leitura dos dados.");
     }
 
     console.log(username + " - " + password);
-    findUser(username, password)
-        .catch(err => {
-            return res.status(500).send("Erro detectado: " + err.name)
-        });
+    let cond = await findUser(username, password).then();
 
     let user = await findUserByUsername(username).then();
     console.log("Condição (usuário): " + user);
@@ -51,7 +43,8 @@ router.post('/login', async (req, res) => {
     if (!name) return res.status(404).send({message: "Erro ao acessar nome."});
 
     console.log(`Redirecionamento para dashboard/${name}`);
-    return res.status(200).send({name: name, username: username});  //Redireciona para dashboard de usuário
+    if (cond) return res.status(200).send({name: name, username: username, command: true});  //Redireciona para dashboard de usuário
+    else return res.status(405).send({message: "Não há usuário registrado com tais credenciais.", command: false});
 });
 
 router.get('/signup', (req, res) => {
