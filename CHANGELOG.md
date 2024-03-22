@@ -47,6 +47,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 41. Alteração no serviço de notas no arquivo [noteService.ts](src/services/noteService.ts)
 42. Criação das rotas de notas no arquivo [noteRoute.ts](src/routes/noteRoute.ts)
 43. Realização de testes com as rotas de notas
+44. Adição da biblioteca JEST e realização de testes automatizados
 
 ### Listagem de fontes ou referências de aprendizado
 
@@ -59,6 +60,7 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
 > - [How ro fix __dirname not defined ES module | Flavio Copes](https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/)
 > - [SISTEMA DE LOGIN COM NODE JS | TUTORIAL DE JAVASCRIPT | YouTube](https://www.youtube.com/watch?v=rXWa9jtHu7g&t=583s)
 > - [Deploy an Express API to Vercel | Coding Garden](https://www.youtube.com/watch?v=B-T69_VP2Ls&t=290s)
+> - [Testes Automatizados com o Jest — Node.js e Typescript](https://gabriel-amorim.medium.com/testes-automatizados-com-o-jest-node-js-e-typescript-6d6c6fe8158f)
 
 > **Plataformas para pesquisa:**
 > - Google
@@ -100,3 +102,9 @@ Aqui ocorrerá a listagem de mudanças no projeto e explicações ou consideraç
   - Instance Type: Free
   - Environment Variables: Added from the local .env file
   Após isso, basta clicar em "Create Web Service".
+
+- JEST:
+  
+  Instalação: `jest @types/jest -D`
+
+  Inicialização: `npx jest --init`
